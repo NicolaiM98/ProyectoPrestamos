@@ -40,7 +40,7 @@ public class UtilidadesComponente {
                         band = false;
                     }
                 }
-                ;
+                
         }
         return band;
     }

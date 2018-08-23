@@ -1,22 +1,21 @@
 /*
-clase por defecto que permite hacer validaciones
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package controlador.utilidades;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
-
 import org.apache.commons.lang.StringUtils;
 
 /**
  *
- * @author Programacion I 2B
+ * @author Fabricio
  */
-public class Utilidades extends StringUtils{
-    
-   
-    
+
+    public class Utilidades extends StringUtils{
+      
    public static String formatearFecha(Date fecha){
        String fechaSalida = "";
        try{
@@ -27,3 +26,4 @@ public class Utilidades extends StringUtils{
        return fechaSalida;
    } 
 }
+
