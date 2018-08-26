@@ -5,6 +5,11 @@
  */
 package vista;
 
+import controlador.servicios.PagosServicio;
+import controlador.servicios.PrestamosServicio;
+import controlador.servicios.RolServicio;
+import java.util.Date;
+import java.util.UUID;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import vista.utilidades.UtilidadesComponente;
@@ -22,7 +27,8 @@ public class FrmPrestamos extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
     }
-
+    private PrestamosServicio ps = new PrestamosServicio();
+    private PagosServicio pgs= new PagosServicio();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,15 +39,18 @@ public class FrmPrestamos extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbx_tipo = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         txt_monto = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btn_solicitar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
+        jLabel5 = new javax.swing.JLabel();
+        txt_anios = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -49,12 +58,12 @@ public class FrmPrestamos extends javax.swing.JDialog {
         jLabel1.setForeground(new java.awt.Color(0, 51, 153));
         jLabel1.setText("Solicitar Prestamo Bancario");
 
-        jComboBox1.setFont(new java.awt.Font("MS UI Gothic", 0, 11)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 153)));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cbx_tipo.setFont(new java.awt.Font("MS UI Gothic", 0, 11)); // NOI18N
+        cbx_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Americano\t", "Aleman", "Frances" }));
+        cbx_tipo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 153)));
+        cbx_tipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cbx_tipoActionPerformed(evt);
             }
         });
 
@@ -87,10 +96,15 @@ public class FrmPrestamos extends javax.swing.JDialog {
         jLabel4.setForeground(new java.awt.Color(0, 102, 153));
         jLabel4.setText("Elija el tipo de prestamo");
 
-        jButton1.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 102, 153));
-        jButton1.setText("Solicitar");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_solicitar.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
+        btn_solicitar.setForeground(new java.awt.Color(0, 102, 153));
+        btn_solicitar.setText("Solicitar");
+        btn_solicitar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_solicitar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_solicitarActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jButton2.setForeground(new java.awt.Color(0, 102, 153));
@@ -102,6 +116,31 @@ public class FrmPrestamos extends javax.swing.JDialog {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("MS UI Gothic", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel5.setText("Elija la cantidad de años");
+
+        txt_anios.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
+        txt_anios.setText("1");
+        txt_anios.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 153)));
+        txt_anios.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_aniosFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_aniosFocusLost(evt);
+            }
+        });
+        txt_anios.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_aniosKeyTyped(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(153, 153, 255));
+        jLabel6.setText("Los años deben ser entre 1 y 10 ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -109,37 +148,33 @@ public class FrmPrestamos extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator1)
+                            .addComponent(jSeparator2)))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(101, 101, 101)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_solicitar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(82, 82, 82)
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(117, 117, 117)
-                                .addComponent(jLabel1)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator1)
-                            .addComponent(jSeparator2)
+                                .addComponent(jLabel1))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(69, 69, 69)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(59, 59, 59)
-                                            .addComponent(txt_monto, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(59, 59, 59)
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 24, Short.MAX_VALUE)))))
+                                    .addComponent(txt_monto, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbx_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_anios, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 24, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -155,16 +190,22 @@ public class FrmPrestamos extends javax.swing.JDialog {
                     .addComponent(txt_monto, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
-                .addGap(29, 29, 29)
+                .addGap(8, 8, 8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_anios, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
+                    .addComponent(cbx_tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_solicitar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(68, 68, 68))
         );
 
@@ -172,12 +213,46 @@ public class FrmPrestamos extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    private void limpiar(){
+     txt_monto.setText("1000.00");
+     txt_anios.setText("1");
+     cbx_tipo.setSelectedIndex(0);
+    }
+     private void cargarObjeto() {
+        ps.getPrestamos().setValorPrestamo(Double.parseDouble(txt_monto.getText()));
+        ps.getPrestamos().setNumeroCuotas(Integer.parseInt(txt_anios.getText())*12);
+        pgs.getPagos().setAnios(Integer.parseInt(txt_anios.getText()));
+        ps.getPrestamos().setTipo(cbx_tipo.getSelectedItem().toString());
+    }
+
+    private void guardar() {
+        String mensaje = "Se requiere este campo";
+        if (!UtilidadesComponente.mostrarError(txt_monto, "Falta este dato", 'r')) {
+                cargarObjeto();
+            if (ps.getPrestamos().getId() != null) {
+                if (ps.guardar()&& pgs.guardar()) {
+                    UtilidadesComponente.mensajeOk("Se ha guardado correctamente", "");
+                    limpiar();
+                } else {
+                    UtilidadesComponente.mensajeError("Error", "No se pudo guardar");
+                }
+            } else {
+                if (ps.guardar()&&pgs.guardar()) {
+                    UtilidadesComponente.mensajeOk("OK", "Se ha modificado correctamente");
+                    limpiar();
+                } else {
+                    UtilidadesComponente.mensajeError("Error", "No se pudo modificar");
+                }
+            }
+        }
+    }
+    private void cbx_tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_tipoActionPerformed
+     
+    }//GEN-LAST:event_cbx_tipoActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+    new FrmPrincipal().setVisible(true);
+                dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void txt_montoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_montoFocusGained
@@ -198,6 +273,27 @@ public class FrmPrestamos extends javax.swing.JDialog {
             getToolkit().beep();
             evt.consume();}
     }//GEN-LAST:event_txt_montoKeyTyped
+
+    private void btn_solicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_solicitarActionPerformed
+        guardar();
+    }//GEN-LAST:event_btn_solicitarActionPerformed
+
+    private void txt_aniosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_aniosFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_aniosFocusGained
+
+    private void txt_aniosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_aniosFocusLost
+       if( (Integer.parseInt(txt_anios.getText())>10)||(Integer.parseInt(txt_anios.getText())<1)){
+            UtilidadesComponente.mensajeError("Error", "Ingrese una cantidad valida ");
+        }else{}
+    }//GEN-LAST:event_txt_aniosFocusLost
+
+    private void txt_aniosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_aniosKeyTyped
+        char c = evt.getKeyChar();
+        if (Character.isLetter(c)) {
+            getToolkit().beep();
+            evt.consume();}
+    }//GEN-LAST:event_txt_aniosKeyTyped
 
     /**
      * @param args the command line arguments
@@ -252,15 +348,18 @@ public class FrmPrestamos extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btn_solicitar;
+    private javax.swing.JComboBox<String> cbx_tipo;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JTextField txt_anios;
     private javax.swing.JTextField txt_monto;
     // End of variables declaration//GEN-END:variables
 }

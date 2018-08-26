@@ -25,10 +25,8 @@ public class CuentaBancaria implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(length = 15)
-    private Integer numerodeCuenta;
-    @Column(length = 10)
-    private Double saldo;
+    @Column(length = 40)
+    private String numerodeCuenta;
     @OneToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(referencedColumnName = "id", name = "idPersona")
     private Persona persona;

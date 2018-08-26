@@ -5,10 +5,34 @@
  */
 package controlador.servicios;
 
+import controlador.dao.PagosDao;
+import java.util.List;
+import modelo.Pagos;
+
 /**
  *
  * @author Fabricio
  */
 public class PagosServicio {
-    
+   private PagosDao obj = new PagosDao();
+
+    public Pagos getPagos() {
+        return obj.getPagos();
+    }
+
+    public boolean guardar() {
+        return obj.guardar();
+    }
+
+    public List<Pagos> todos() {
+        return obj.listar();
+    }
+
+    public Pagos obtener(Long id) {
+        return obj.obtener(id);
+    }
+
+    public void fijarPagos(Pagos pagos) {
+        obj.setPagos(pagos);
+    } 
 }

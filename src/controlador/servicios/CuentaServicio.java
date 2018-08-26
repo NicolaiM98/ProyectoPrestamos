@@ -38,22 +38,21 @@ public class CuentaServicio {
         obj.setCuenta(cuenta);
     }
 
-    public void crearCuentaAdmin() {
+    public   void crearCuentaAdmin() {
         if (todos().isEmpty()) {
             PersonaServicio persona = new PersonaServicio();
-            persona.getPersona().setApellido("Rojas");
-            persona.getPersona().setNombre("Victor");
-            persona.getPersona().setCedula("1105834939");
-            persona.getPersona().setCorreo("Loja");
+            persona.getPersona().setApellido("Mogrovejo");
+            persona.getPersona().setNombre("Damian");
+            persona.getPersona().setCedula("1104706088");
+            persona.getPersona().setCorreo("nicomogrovejo98@yahoo.es");
             persona.getPersona().setExternalId(UUID.randomUUID().toString());
-            persona.getPersona().setTelefono("S/T");
+            persona.getPersona().setTelefono("0980088875");
             persona.getPersona().setRol(new RolServicio().buscarRolNombre("Administrador"));
             Cuenta c = new Cuenta();
-            c.setClave("victor");
-            c.setUsuario("victor");
-            c.setExternalId(UUID.randomUUID().toString());
+            c.setClave("admin1");
+            c.setUsuario("admin1");
             c.setCreatedAt(new Date());
-            c.setUpdatedAt(new Date());
+            c.setUpdatedAt(null);
             c.setPersona(persona.getPersona());
             persona.getPersona().setCuenta(c);
             persona.guardar();

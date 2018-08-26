@@ -51,7 +51,7 @@ public class CuentaDao extends AdaptadorDao<Cuenta>{
     public Cuenta inicioSesion(String usuario, String clave) {
         Cuenta c = null;
         try {
-            Query q = getManager().createQuery("SELECT c FROM Cuenta c WHERE c.correo = :user");
+            Query q = getManager().createQuery("SELECT c FROM Cuenta c WHERE c.usuario = :user");
             q.setParameter("user", usuario);
             Cuenta aux = (Cuenta) q.getSingleResult();
             if (aux != null && aux.getClave().equals(clave)) {

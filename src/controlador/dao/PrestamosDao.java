@@ -42,21 +42,19 @@ public class PrestamosDao extends AdaptadorDao<Prestamos>{
             getManager().getTransaction().begin();
             if(prestamos.getId() != null) {
                 modificar(prestamos);
-                descripcion = "Se modifica el prestamos "+prestamos.getId().intValue();
-                accion = "Modificar Prestamos";
+                descripcion = "Se modifica el prestamo "+prestamos.getId().intValue();
+                accion = "Modificar Prestamo";
             } else {
                 guardar(prestamos);
-                descripcion = "Se registra un nuevo prestamos";
-                accion = "Guardar Prestamos";
+                descripcion = "Se registra un nuevo prestamo";
+                accion = "Guardar Prestamo";
             }
-//            getManager().getTransaction().commit();
-//            verificar = true;
-//            Utilidades.guardarHistorial(accion, descripcion);
         } catch (Exception e) {
             System.out.println("No se ha podido registrar o modificar" + e);
         }
         return verificar;
     }
+    
     
     public List<Prestamos> listarLikePrestamos(String texto) {
         List<Prestamos> lista = new ArrayList<>();

@@ -24,11 +24,16 @@ public class Pagos implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(length = 10)
-    private Double valor;
+    @Column(length = 15)
+    private Integer anios;
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaPago;
-    private String mesPago;
+    @Column(length = 15)
+    private Double interes;
+    @Column(length = 15)
+    private Double cuota;
+    @Column(length = 15)
+    private Double Saldo;
     private Boolean estado=true;
      @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(referencedColumnName = "id", name = "idPrestamos")

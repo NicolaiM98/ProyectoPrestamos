@@ -37,7 +37,11 @@ public class Prestamos implements Serializable {
     @Column(length = 10)
     private Double saldoPendiente;
     @Column(length = 10)
+    private Double valorPrestamo;
+    @Column(length = 10)
     private Double interes;
+    @Column(length = 50)
+    private String tipo;
     private Boolean estado=true;
     @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(referencedColumnName = "id", name = "idCuentaBancaria")

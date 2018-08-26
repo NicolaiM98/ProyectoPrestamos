@@ -33,8 +33,6 @@ public class Cuenta implements Serializable {
     private Date createdAt;
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
-    @Column(length = 40)
-    private String externalId;
    @OneToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(referencedColumnName = "id", name = "idPersona")
     private Persona persona;
