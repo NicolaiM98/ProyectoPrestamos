@@ -27,7 +27,7 @@ public class FrmPrestamos extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
     }
-    private PrestamosServicio ps = new PrestamosServicio();
+    private PrestamosServicio prs = new PrestamosServicio();
     private PagosServicio pgs= new PagosServicio();
     /**
      * This method is called from within the constructor to initialize the form.
@@ -219,25 +219,25 @@ public class FrmPrestamos extends javax.swing.JDialog {
      cbx_tipo.setSelectedIndex(0);
     }
      private void cargarObjeto() {
-        ps.getPrestamos().setValorPrestamo(Double.parseDouble(txt_monto.getText()));
-        ps.getPrestamos().setNumeroCuotas(Integer.parseInt(txt_anios.getText())*12);
+        prs.getPrestamos().setValorPrestamo(Double.parseDouble(txt_monto.getText()));
+        prs.getPrestamos().setNumeroCuotas(Integer.parseInt(txt_anios.getText())*12);
         pgs.getPagos().setAnios(Integer.parseInt(txt_anios.getText()));
-        ps.getPrestamos().setTipo(cbx_tipo.getSelectedItem().toString());
+        prs.getPrestamos().setTipo(cbx_tipo.getSelectedItem().toString());
     }
 
     private void guardar() {
         String mensaje = "Se requiere este campo";
         if (!UtilidadesComponente.mostrarError(txt_monto, "Falta este dato", 'r')) {
                 cargarObjeto();
-            if (ps.getPrestamos().getId() != null) {
-                if (ps.guardar()&& pgs.guardar()) {
+            if (prs.getPrestamos().getId() != null) {
+                if (prs.guardar()&& pgs.guardar()) {
                     UtilidadesComponente.mensajeOk("Se ha guardado correctamente", "");
                     limpiar();
                 } else {
                     UtilidadesComponente.mensajeError("Error", "No se pudo guardar");
                 }
             } else {
-                if (ps.guardar()&&pgs.guardar()) {
+                if (prs.guardar()&&pgs.guardar()) {
                     UtilidadesComponente.mensajeOk("OK", "Se ha modificado correctamente");
                     limpiar();
                 } else {

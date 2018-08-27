@@ -429,7 +429,6 @@ public class FrmLogin extends javax.swing.JDialog {
 
     }//GEN-LAST:event_btn_loginActionPerformed
     private void cargarObjeto() {
-        rs.crearRoles();
         ps.getPersona().setApellido(txt_regApell.getText());
         ps.getPersona().setNombre(txt_regNom.getText());
         ps.getPersona().setCedula(txt_regCed.getText());

@@ -8,6 +8,7 @@ package vista;
 import controlador.servicios.CuentaBancariaServicio;
 import controlador.servicios.CuentaServicio;
 import controlador.servicios.PersonaServicio;
+import controlador.utilidades.Sesion;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
@@ -24,6 +25,7 @@ public class FrmCuentaBancaria extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         cargarDatos();
+        
     }
     private PersonaServicio ps = new PersonaServicio();
     private CuentaServicio cs = new CuentaServicio();
@@ -89,7 +91,7 @@ public class FrmCuentaBancaria extends javax.swing.JDialog {
         btn_volverCuentaB.setFont(new java.awt.Font("MS UI Gothic", 0, 14)); // NOI18N
         btn_volverCuentaB.setForeground(new java.awt.Color(0, 102, 153));
         btn_volverCuentaB.setText("Volver");
-        btn_volverCuentaB.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_volverCuentaB.setBorder(null);
         btn_volverCuentaB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_volverCuentaBActionPerformed(evt);
@@ -140,7 +142,7 @@ public class FrmCuentaBancaria extends javax.swing.JDialog {
                             .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(205, 205, 205)
+                        .addGap(197, 197, 197)
                         .addComponent(btn_volverCuentaB, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
@@ -183,7 +185,9 @@ public class FrmCuentaBancaria extends javax.swing.JDialog {
                 dispose(); 
     }//GEN-LAST:event_btn_volverCuentaBActionPerformed
     private void cargarDatos(){
-    txt_nomb.setText(ps.getPersona().getNombre()+" "+ ps.getPersona().getApellido());
+        ps.fijarPersona(Sesion.getCuenta().getPersona());
+        cbs.fijarCuentaBancaria(Sesion.getCuenta().getPersona().getCuentaBancaria());
+    txt_nomb.setText(ps.getPersona().toString());
     txt_nrocuenta.setText(cbs.getCuentaBancaria().getNumerodeCuenta());
     txt_telef.setText(ps.getPersona().getTelefono());
     }

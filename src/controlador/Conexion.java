@@ -5,6 +5,8 @@
  */
 package controlador;
 
+import controlador.servicios.CuentaServicio;
+import controlador.servicios.RolServicio;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -29,7 +31,7 @@ public class Conexion {
     }
 
     public static void main(String[] args) {
-  //      new RolService().crearRoles();
-   //     new CuentaService().crearCuentaAdmin();
+        new RolServicio().crearRoles();
+       
     }
 }

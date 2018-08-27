@@ -49,6 +49,8 @@ public class PrestamosDao extends AdaptadorDao<Prestamos>{
                 descripcion = "Se registra un nuevo prestamo";
                 accion = "Guardar Prestamo";
             }
+            getManager().getTransaction().commit();
+            verificar = true;
         } catch (Exception e) {
             System.out.println("No se ha podido registrar o modificar" + e);
         }

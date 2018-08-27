@@ -26,7 +26,7 @@ public class Rol implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(length = 25)
-    private String rol;
+    private String nombre;
     @OneToMany(mappedBy = "rol", cascade = CascadeType.ALL)
     private List<Persona> listaPersona = new ArrayList<>();
 

@@ -42,10 +42,10 @@ public class RolServicio {
 
     public void crearRoles() {
         if (todos().isEmpty()) {
-            getRol().setRol("Administrador");
+            getRol().setNombre("Administrador");
             guardar();
             fijarRol(null);
-            getRol().setRol("Usuario");
+            getRol().setNombre("Usuario");
             guardar();
 
             fijarRol(null);

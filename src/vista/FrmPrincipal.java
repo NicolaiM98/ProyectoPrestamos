@@ -104,12 +104,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btn_salirPrincipalActionPerformed
 
-    private void btn_cuentaBancariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cuentaBancariaActionPerformed
-        // TODO add your handling code here:
-        new FrmCuentaBancaria(this,true).setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btn_cuentaBancariaActionPerformed
-
     private void btn_solicitarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_solicitarPrestamoActionPerformed
         // TODO add your handling code here:
         new FrmPrestamos(this,true).setVisible(true);
@@ -121,6 +115,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         new FrmPagos(this,true).setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btn_cuentaBancariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cuentaBancariaActionPerformed
+     new FrmCuentaBancaria(this,true).setVisible(true);
+     dispose();
+    }//GEN-LAST:event_btn_cuentaBancariaActionPerformed
 
     /**
      * @param args the command line arguments
