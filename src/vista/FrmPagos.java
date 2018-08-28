@@ -5,23 +5,34 @@
  */
 package vista;
 
+import controlador.servicios.PrestamosServicio;
+import controlador.utilidades.Sesion;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
+import modelo.Prestamos;
+import vista.tablas.ModeloTablaPrestamos;
 
 /**
  *
  * @author Fabricio
  */
 public class FrmPagos extends javax.swing.JDialog {
-
+private ModeloTablaPrestamos modelo = new ModeloTablaPrestamos();
+private PrestamosServicio ps = new PrestamosServicio();
     /**
      * Creates new form FrmPagos
      */
     public FrmPagos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        cargarTabla();
     }
-
+ private void cargarTabla(){
+     //ps.fijarPrestamos((Prestamos) Sesion.getCuenta().getPersona().getCuentaBancaria().getListaPrestamos());
+        modelo.setLista(ps.todos());
+        tbl_tabla.setModel(modelo);
+        tbl_tabla.updateUI();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,7 +45,7 @@ public class FrmPagos extends javax.swing.JDialog {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl_tabla = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         lb_deudaT = new javax.swing.JLabel();
@@ -42,6 +53,7 @@ public class FrmPagos extends javax.swing.JDialog {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         btn_volver = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -60,9 +72,9 @@ public class FrmPagos extends javax.swing.JDialog {
         jButton2.setText("Cuotas Pendientes");
         jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jTable1.setBorder(new javax.swing.border.MatteBorder(null));
-        jTable1.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_tabla.setBorder(new javax.swing.border.MatteBorder(null));
+        tbl_tabla.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
+        tbl_tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -73,7 +85,7 @@ public class FrmPagos extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbl_tabla);
 
         jLabel1.setFont(new java.awt.Font("MS UI Gothic", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 102, 153));
@@ -102,6 +114,13 @@ public class FrmPagos extends javax.swing.JDialog {
         btn_volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_volverActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("cargar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
             }
         });
 
@@ -141,7 +160,9 @@ public class FrmPagos extends javax.swing.JDialog {
                         .addGap(0, 5, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(188, 188, 188)
+                .addGap(97, 97, 97)
+                .addComponent(jButton3)
+                .addGap(18, 18, 18)
                 .addComponent(btn_volver, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -167,7 +188,9 @@ public class FrmPagos extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_volver, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_volver, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -183,6 +206,10 @@ public class FrmPagos extends javax.swing.JDialog {
     new FrmPrincipal().setVisible(true);
                 dispose();
     }//GEN-LAST:event_btn_volverActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        cargarTabla();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -239,13 +266,14 @@ JFrame.setDefaultLookAndFeelDecorated(true);
     private javax.swing.JButton btn_volver;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lb_deudaP;
     private javax.swing.JLabel lb_deudaT;
+    private javax.swing.JTable tbl_tabla;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,9 +5,11 @@
  */
 package vista;
 
+import controlador.servicios.CuentaBancariaServicio;
 import controlador.servicios.PagosServicio;
 import controlador.servicios.PrestamosServicio;
 import controlador.servicios.RolServicio;
+import controlador.utilidades.Sesion;
 import java.util.Date;
 import java.util.UUID;
 import javax.swing.JFrame;
@@ -29,6 +31,7 @@ public class FrmPrestamos extends javax.swing.JDialog {
     }
     private PrestamosServicio prs = new PrestamosServicio();
     private PagosServicio pgs= new PagosServicio();
+    private CuentaBancariaServicio cbs = new CuentaBancariaServicio();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -219,10 +222,13 @@ public class FrmPrestamos extends javax.swing.JDialog {
      cbx_tipo.setSelectedIndex(0);
     }
      private void cargarObjeto() {
+        cbs.fijarCuentaBancaria(Sesion.getCuenta().getPersona().getCuentaBancaria());
         prs.getPrestamos().setValorPrestamo(Double.parseDouble(txt_monto.getText()));
-        prs.getPrestamos().setNumeroCuotas(Integer.parseInt(txt_anios.getText())*12);
+        prs.getPrestamos().setNumeroCuotas(Integer.parseInt(txt_anios.getText()));
         pgs.getPagos().setAnios(Integer.parseInt(txt_anios.getText()));
         prs.getPrestamos().setTipo(cbx_tipo.getSelectedItem().toString());
+        prs.getPrestamos().setCuentaBancaria(cbs.getCuentaBancaria());
+        prs.getPrestamos().setFechaEmision(new Date());
     }
 
     private void guardar() {
@@ -230,7 +236,7 @@ public class FrmPrestamos extends javax.swing.JDialog {
         if (!UtilidadesComponente.mostrarError(txt_monto, "Falta este dato", 'r')) {
                 cargarObjeto();
             if (prs.getPrestamos().getId() != null) {
-                if (prs.guardar()&& pgs.guardar()) {
+                if (prs.guardar()&& pgs.guardar()/*&& cbs.guardar()*/) {
                     UtilidadesComponente.mensajeOk("Se ha guardado correctamente", "");
                     limpiar();
                 } else {
