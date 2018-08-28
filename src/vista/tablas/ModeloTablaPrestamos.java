@@ -34,7 +34,7 @@ public class ModeloTablaPrestamos extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         Prestamos p = lista.get(rowIndex);
         switch(columnIndex) {
-            case 0: return p.getNumeroCuotas();
+            case 0: return (p.getNumeroCuotas())*12;
             case 1: return p.getFechaEmision();
             case 2: return p.getFechaLimite();
             case 3: return p.getSaldoPendiente();

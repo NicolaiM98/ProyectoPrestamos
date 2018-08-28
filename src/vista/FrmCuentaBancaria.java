@@ -8,9 +8,11 @@ package vista;
 import controlador.servicios.CuentaBancariaServicio;
 import controlador.servicios.CuentaServicio;
 import controlador.servicios.PersonaServicio;
+import controlador.servicios.PrestamosServicio;
 import controlador.utilidades.Sesion;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
+import vista.tablas.ModeloTablaPrestamos;
 
 /**
  *
@@ -25,11 +27,21 @@ public class FrmCuentaBancaria extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         cargarDatos();
+        cargarTabla();
         
     }
     private PersonaServicio ps = new PersonaServicio();
     private CuentaServicio cs = new CuentaServicio();
     private CuentaBancariaServicio cbs = new CuentaBancariaServicio();
+    private PrestamosServicio prs = new PrestamosServicio();
+    private ModeloTablaPrestamos modelo = new ModeloTablaPrestamos();
+    
+    private void cargarTabla(){
+        modelo.setLista(prs.todos());
+        tbl_tabla.setModel(modelo);
+        tbl_tabla.updateUI();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,7 +56,7 @@ public class FrmCuentaBancaria extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        tbl_prestamos = new javax.swing.JTable();
+        tbl_tabla = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         btn_volverCuentaB = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
@@ -71,7 +83,7 @@ public class FrmCuentaBancaria extends javax.swing.JDialog {
         jLabel4.setForeground(new java.awt.Color(0, 102, 153));
         jLabel4.setText("N° de Cuenta");
 
-        tbl_prestamos.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -82,7 +94,7 @@ public class FrmCuentaBancaria extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane4.setViewportView(tbl_prestamos);
+        jScrollPane4.setViewportView(tbl_tabla);
 
         jLabel5.setFont(new java.awt.Font("MS UI Gothic", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 102, 153));
@@ -252,7 +264,7 @@ JFrame.setDefaultLookAndFeelDecorated(true);
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTable tbl_prestamos;
+    private javax.swing.JTable tbl_tabla;
     private javax.swing.JTextField txt_nomb;
     private javax.swing.JTextField txt_nrocuenta;
     private javax.swing.JTextField txt_telef;
