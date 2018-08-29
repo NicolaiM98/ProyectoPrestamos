@@ -76,7 +76,7 @@ public class PrestamosDao extends AdaptadorDao<Prestamos>{
   public List<Prestamos> listarPrestamos() {
         List<Prestamos> lista = new ArrayList<>();
         try {
-            Query q = getManager().createQuery("SELECT p FROM Prestamos where p.id = :id");
+            Query q = getManager().createQuery("SELECT p FROM Prestamos p where p.cuentaBancaria.id = :id");
             q.setParameter("id", Sesion.getCuenta().getPersona().getCuentaBancaria().getId());
             lista = q.getResultList();
         } catch (Exception e) {

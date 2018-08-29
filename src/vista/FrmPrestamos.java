@@ -16,6 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.UIManager;
 import modelo.Prestamos;
 import vista.utilidades.UtilidadesComponente;
+import controlador.utilidades.Utilidades;
 
 /**
  *
@@ -33,6 +34,7 @@ public class FrmPrestamos extends javax.swing.JDialog {
     private PrestamosServicio prs = new PrestamosServicio();
     private PagosServicio pgs= new PagosServicio();
     private CuentaBancariaServicio cbs = new CuentaBancariaServicio();
+    private Utilidades ut= new Utilidades();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -226,6 +228,8 @@ public class FrmPrestamos extends javax.swing.JDialog {
         cbs.fijarCuentaBancaria(Sesion.getCuenta().getPersona().getCuentaBancaria());
         prs.getPrestamos().setValorPrestamo(Double.parseDouble(txt_monto.getText()));
         prs.getPrestamos().setNumeroCuotas(Integer.parseInt(txt_anios.getText()));
+        prs.getPrestamos().setSaldoTotal(Double.parseDouble(txt_monto.getText()));
+        prs.getPrestamos().setFechaLimite(ut.sumarAnios(new Date(),(Integer.parseInt(txt_anios.getText())) ));
         pgs.getPagos().setAnios(Integer.parseInt(txt_anios.getText()));
         prs.getPrestamos().setTipo(cbx_tipo.getSelectedItem().toString());
         prs.getPrestamos().setCuentaBancaria(cbs.getCuentaBancaria());

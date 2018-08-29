@@ -36,7 +36,8 @@ public class FrmCuentaBancaria extends javax.swing.JDialog {
     private PrestamosServicio prs = new PrestamosServicio();
     private ModeloTablaPrestamos modelo = new ModeloTablaPrestamos();
     
-    private void cargarTabla(){
+     private void cargarTabla(){
+     //ps.fijarPrestamos((Prestamos) Sesion.getCuenta().getPersona().getCuentaBancaria().getListaPrestamos());
         modelo.setLista(prs.listarPrestamos());
         tbl_tabla.setModel(modelo);
         tbl_tabla.updateUI();

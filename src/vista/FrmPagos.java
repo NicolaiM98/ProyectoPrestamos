@@ -17,7 +17,6 @@ import vista.tablas.ModeloTablaPrestamos;
  * @author Fabricio
  */
 public class FrmPagos extends javax.swing.JDialog {
-private ModeloTablaPrestamos modelo = new ModeloTablaPrestamos();
 private PrestamosServicio ps = new PrestamosServicio();
     /**
      * Creates new form FrmPagos
@@ -25,13 +24,6 @@ private PrestamosServicio ps = new PrestamosServicio();
     public FrmPagos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        cargarTabla();
-    }
- private void cargarTabla(){
-     //ps.fijarPrestamos((Prestamos) Sesion.getCuenta().getPersona().getCuentaBancaria().getListaPrestamos());
-        modelo.setLista(ps.todos());
-        tbl_tabla.setModel(modelo);
-        tbl_tabla.updateUI();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -208,7 +200,7 @@ private PrestamosServicio ps = new PrestamosServicio();
     }//GEN-LAST:event_btn_volverActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        cargarTabla();
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
