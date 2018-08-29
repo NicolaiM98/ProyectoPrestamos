@@ -34,7 +34,9 @@ public class PrestamosServicio {
     public void fijarPrestamos(Prestamos prestamos) {
         obj.setPrestamos(prestamos);
     }
-    
+   public List<Prestamos> listarPrestamos() {
+        return obj.listarPrestamos();
+   }
     public List<Prestamos> listarLikePrestamos(String texto) {
         return obj.listarLikePrestamos(texto);
     }

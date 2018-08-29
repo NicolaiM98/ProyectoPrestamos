@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.UUID;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
+import modelo.Prestamos;
 import vista.utilidades.UtilidadesComponente;
 
 /**
@@ -229,6 +230,7 @@ public class FrmPrestamos extends javax.swing.JDialog {
         prs.getPrestamos().setTipo(cbx_tipo.getSelectedItem().toString());
         prs.getPrestamos().setCuentaBancaria(cbs.getCuentaBancaria());
         prs.getPrestamos().setFechaEmision(new Date());
+        pgs.getPagos().setPrestamos(prs.getPrestamos());
     }
 
     private void guardar() {

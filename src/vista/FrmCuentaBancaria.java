@@ -37,7 +37,7 @@ public class FrmCuentaBancaria extends javax.swing.JDialog {
     private ModeloTablaPrestamos modelo = new ModeloTablaPrestamos();
     
     private void cargarTabla(){
-        modelo.setLista(prs.todos());
+        modelo.setLista(prs.listarPrestamos());
         tbl_tabla.setModel(modelo);
         tbl_tabla.updateUI();
     }
@@ -197,8 +197,8 @@ public class FrmCuentaBancaria extends javax.swing.JDialog {
                 dispose(); 
     }//GEN-LAST:event_btn_volverCuentaBActionPerformed
     private void cargarDatos(){
-        ps.fijarPersona(Sesion.getCuenta().getPersona());
-        cbs.fijarCuentaBancaria(Sesion.getCuenta().getPersona().getCuentaBancaria());
+    ps.fijarPersona(Sesion.getCuenta().getPersona());
+    cbs.fijarCuentaBancaria(Sesion.getCuenta().getPersona().getCuentaBancaria());
     txt_nomb.setText(ps.getPersona().toString());
     txt_nrocuenta.setText(cbs.getCuentaBancaria().getNumerodeCuenta());
     txt_telef.setText(ps.getPersona().getTelefono());
@@ -229,7 +229,7 @@ public class FrmCuentaBancaria extends javax.swing.JDialog {
             java.util.logging.Logger.getLogger(FrmCuentaBancaria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-JFrame.setDefaultLookAndFeelDecorated(true);
+        JFrame.setDefaultLookAndFeelDecorated(true);
         try {
             // select Look and Feel
             UIManager.setLookAndFeel("com.jtattoo.plaf.mint.MintLookAndFeel");

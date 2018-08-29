@@ -5,6 +5,7 @@
  */
 package controlador.dao;
 
+import controlador.utilidades.Sesion;
 import modelo.Prestamos;
 import controlador.utilidades.Utilidades;
 import java.util.ArrayList;
@@ -72,18 +73,15 @@ public class PrestamosDao extends AdaptadorDao<Prestamos>{
         }
         return lista;
     }
-//     public List<Prestamos> listarPrestamos() {
-//        List<Prestamos> lista = new ArrayList<>();
-//        try {
-//            Query q = getManager().createQuery("SELECT p FROM Prestamos p where "                    
-//                    + "(lower(p.persona.apellidos) LIKE CONCAT('%', :texto, '%'))"
-//                    + " or (lower(p.codigo) LIKE CONCAT('%', :texto1, '%'))");
-//            q.setParameter("texto", texto);            
-//            q.setParameter("texto1", texto);
-//            lista = q.getResultList();
-//        } catch (Exception e) {
-//            System.out.println("error "+e);
-//        }
-//        return lista;
-//    }
+  public List<Prestamos> listarPrestamos() {
+        List<Prestamos> lista = new ArrayList<>();
+        try {
+            Query q = getManager().createQuery("SELECT p FROM Prestamos where p.id = :id");
+            q.setParameter("id", Sesion.getCuenta().getPersona().getCuentaBancaria().getId());
+            lista = q.getResultList();
+        } catch (Exception e) {
+            System.out.println("error "+e);
+        }
+        return lista;
+    }
 }
