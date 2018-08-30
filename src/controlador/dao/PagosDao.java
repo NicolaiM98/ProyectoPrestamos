@@ -6,6 +6,8 @@
 package controlador.dao;
 
 import static controlador.Conexion.getManager;
+import java.util.ArrayList;
+import java.util.List;
 import modelo.Pagos;
 
 /**
@@ -47,5 +49,9 @@ public class PagosDao extends AdaptadorDao<Pagos> {
         return verificar;
     }
 
-    
+public List<Pagos> listarPagosFrances() {
+        List<Pagos> lista = new ArrayList<>();
+
+return lista;
+}    
 }

@@ -5,6 +5,8 @@
  */
 package vista;
 
+import controlador.servicios.CuentaBancariaServicio;
+import controlador.servicios.PersonaServicio;
 import controlador.servicios.PrestamosServicio;
 import controlador.utilidades.Sesion;
 import javax.swing.JFrame;
@@ -17,13 +19,23 @@ import vista.tablas.ModeloTablaPrestamos;
  * @author Fabricio
  */
 public class FrmPagos extends javax.swing.JDialog {
-private PrestamosServicio ps = new PrestamosServicio();
+private PersonaServicio ps = new PersonaServicio();
+private PrestamosServicio prs = new PrestamosServicio();
+private CuentaBancariaServicio cbs = new CuentaBancariaServicio();
     /**
      * Creates new form FrmPagos
      */
     public FrmPagos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        cargarDatos();
+    }
+    private void cargarDatos(){
+    ps.fijarPersona(Sesion.getCuenta().getPersona());
+    cbs.fijarCuentaBancaria(Sesion.getCuenta().getPersona().getCuentaBancaria());
+    prs.fijarPrestamos(prs.getPrestamos());
+    txt_total.setText(prs.getPrestamos().getSaldoTotal().toString());
+    txt_pendiente.setText(prs.getPrestamos().getSaldoPendiente().toString());
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,12 +52,12 @@ private PrestamosServicio ps = new PrestamosServicio();
         tbl_tabla = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        lb_deudaT = new javax.swing.JLabel();
-        lb_deudaP = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         btn_volver = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        txt_total = new javax.swing.JTextField();
+        txt_pendiente = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -87,14 +99,6 @@ private PrestamosServicio ps = new PrestamosServicio();
         jLabel2.setForeground(new java.awt.Color(0, 102, 153));
         jLabel2.setText("Deuda Pendiente");
 
-        lb_deudaT.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
-        lb_deudaT.setText("Not Found.");
-        lb_deudaT.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-
-        lb_deudaP.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
-        lb_deudaP.setText("Not Found");
-        lb_deudaP.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-
         jLabel3.setFont(new java.awt.Font("MS UI Gothic", 3, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 51, 153));
         jLabel3.setText("Registro de Pagos");
@@ -116,6 +120,10 @@ private PrestamosServicio ps = new PrestamosServicio();
             }
         });
 
+        txt_total.setEditable(false);
+
+        txt_pendiente.setEditable(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -132,15 +140,11 @@ private PrestamosServicio ps = new PrestamosServicio();
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(40, 40, 40)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(lb_deudaT, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
-                                            .addComponent(lb_deudaP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(27, 27, 27)
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                                    .addComponent(txt_total)
+                                    .addComponent(txt_pendiente)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(84, 84, 84)
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -163,14 +167,14 @@ private PrestamosServicio ps = new PrestamosServicio();
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addGap(18, 18, 18)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(lb_deudaT, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
+                    .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
-                    .addComponent(lb_deudaP, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_pendiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -264,8 +268,8 @@ JFrame.setDefaultLookAndFeelDecorated(true);
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel lb_deudaP;
-    private javax.swing.JLabel lb_deudaT;
     private javax.swing.JTable tbl_tabla;
+    private javax.swing.JTextField txt_pendiente;
+    private javax.swing.JTextField txt_total;
     // End of variables declaration//GEN-END:variables
 }
