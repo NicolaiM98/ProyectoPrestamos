@@ -26,7 +26,7 @@ import org.apache.commons.lang.StringUtils;
        
        return fechaSalida;
    } 
-    public Date sumarAnios( Date fecha , int anios){
+    public static Date sumarAnios( Date fecha , int anios){
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
         calendar.add(Calendar.YEAR, anios);

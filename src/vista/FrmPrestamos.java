@@ -17,6 +17,7 @@ import javax.swing.UIManager;
 import modelo.Prestamos;
 import vista.utilidades.UtilidadesComponente;
 import controlador.utilidades.Utilidades;
+import controlador.utilidades.Operaciones;
 import vista.tablas.ModeloTablaPagosFrances;
 
 /**
@@ -37,6 +38,7 @@ public class FrmPrestamos extends javax.swing.JDialog {
     private CuentaBancariaServicio cbs = new CuentaBancariaServicio();
     private Utilidades ut= new Utilidades();
     private ModeloTablaPagosFrances modelo = new ModeloTablaPagosFrances();
+    private Operaciones op = new Operaciones();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -280,14 +282,43 @@ public class FrmPrestamos extends javax.swing.JDialog {
         pgs.getPagos().setAnios(Integer.parseInt(txt_anios.getText()));
         prs.getPrestamos().setTipo(cbx_tipo.getSelectedItem().toString());
         prs.getPrestamos().setCuentaBancaria(cbs.getCuentaBancaria());
-        prs.getPrestamos().setFechaEmision(new Date());
-        pgs.getPagos().setPrestamos(prs.getPrestamos());
-        pgs.CalcularPagosFrances(Double.parseDouble(txt_monto.getText()) , Integer.parseInt(txt_anios.getText()));
+        prs.getPrestamos().setFechaEmision(new Date()); 
+        double cuota = 0.0;
+        double interes;
+        int n = ((Integer.parseInt(txt_anios.getText())) * 12);
+        interes=((1-(Math.pow(1.004074, -n)))/0.004074);
+        cuota= (Double.parseDouble(txt_monto.getText()))/interes;
+        double ra= (Double.parseDouble(txt_monto.getText()));
+        double ci=0,  tci=0 , ta=0 , ca=0;
+        tci=0;
+        double exp = 0.083;
+        double inte =0.0;
+                inte=Math.pow((1+0.05),exp)-1;
+        ta=0;
+        for(int i =0 ; i< n ;i++){
+                ci=ra*inte;
+                tci=tci+ci;
+                ca=cuota-ci;
+                ta=ta+ca;
+                ra=(Double.parseDouble(txt_monto.getText()))-ta;
+               
+                
+                pgs.getPagos().setNumeroCuotas(i+1);
+                pgs.getPagos().setInteres(ci);
+                pgs.getPagos().setCuota(cuota);
+                pgs.getPagos().setAmortizacion(ta);
+                pgs.getPagos().setSaldo(ra);
+                pgs.getPagos().setEstado(true);
+                pgs.getPagos().setFechaPago(ut.sumarMeses(new Date()));
+                pgs.getPagos().setPrestamos(prs.getPrestamos());
+                
+        }
     }
 
     private void guardar() {
         String mensaje = "Se requiere este campo";
-        if (!UtilidadesComponente.mostrarError(txt_monto, "Falta este dato", 'r')) {
+        if (!UtilidadesComponente.mostrarError(txt_monto, "Falta este dato", 'r')
+                && !UtilidadesComponente.mostrarError(txt_anios, "Falta este dato", 'r')) {
                 cargarObjeto();
             if (prs.getPrestamos().getId() != null) {
                 if (prs.guardar()&& pgs.guardar()/*&& cbs.guardar()*/) {
@@ -360,7 +391,7 @@ public class FrmPrestamos extends javax.swing.JDialog {
        
        }
        else if(cbx_tipo.getSelectedItem().toString().toLowerCase().equals("frances")){
-       txt_calcular.setText(pgs.CalcularFrances(Double.parseDouble(txt_monto.getText()) , Integer.parseInt(txt_anios.getText()) ));
+       txt_calcular.setText(op.CalcularFrances(Double.parseDouble(txt_monto.getText()) , Integer.parseInt(txt_anios.getText()) ));
        }
        else{
            

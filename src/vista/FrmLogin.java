@@ -494,7 +494,7 @@ public class FrmLogin extends javax.swing.JDialog {
             Sesion.setCuenta(new CuentaServicio().inicioSesion(txt_usuario.getText(),
                     new String(txt_pass.getPassword())));
             if (Sesion.getCuenta() != null) {
-                 new FrmPrincipal().setVisible(true);
+                new FrmPrincipal().setVisible(true);
                 dispose();
             } else {
                 UtilidadesComponente
