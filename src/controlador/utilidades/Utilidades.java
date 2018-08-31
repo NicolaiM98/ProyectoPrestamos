@@ -32,5 +32,11 @@ import org.apache.commons.lang.StringUtils;
         calendar.add(Calendar.YEAR, anios);
         return calendar.getTime();
     }
+    public Date sumarMeses( Date fecha ){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        calendar.add(Calendar.MONTH, 1);
+        return calendar.getTime();
+    }
 }
 

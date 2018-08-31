@@ -48,33 +48,54 @@ public class PagosDao extends AdaptadorDao<Pagos> {
         }
         return verificar;
     }
-     public  List CalcularFrances(double capital , int anios ){
+    public String CalcularFrances (double capital , int anios){
+        String mensaje="";
         double cuota = 0.0;
         double interes;
         int n = (anios * 12);
-        interes=((1-(Math.pow(1.004074, -120)))/0.004074);
+        interes=((1-(Math.pow(1.004074, -n)))/0.004074);
         cuota= capital/interes;
-        double  ta, ca, ci, ra, tci;
-        ta=0;
-        ra=capital;
+        double ra= capital;
+        double ci=0,  tci=0 , ta=0 , ca=0;
         tci=0;
-        List lista = new ArrayList<>();
-        for (int i=1;i <= n ;i++)
-            {
-                ci=ra*interes;
+        double exp = 0.083;
+        double inte =0.0;
+                inte=Math.pow((1+0.05),exp)-1;
+        ta=0;
+        for(int i =0 ; i< n ;i++){
+                ci=ra*inte;
                 tci=tci+ci;
                 ca=cuota-ci;
                 ta=ta+ca;
                 ra=capital-ta;
-               
-                pagos.setNumeroCuotas(n);
-                pagos.setCuota(cuota);
-                pagos.setInteres(ci);
-                pagos.setAmortizacion(ca);
-                pagos.setSaldo(ra);
-//                lista.add(i,getPagos().setEstado(true) );
-            }  
-        return lista;
-    }
+        }
+        mensaje += "Usted pagara una cuota de: " + cuota + "durante " + n + " periodos;\n ";
+        mensaje+= "El total de interes ah pagar sera: " +tci;
+        return mensaje;
+    } 
+//    public  void CalcularPagosFrances(double capital , int anios ){
+//      double cuota = 0.0;
+//        double interes;
+//        int n = (anios * 12);
+//        interes=((1-(Math.pow(1.004074, -n)))/0.004074);
+//        cuota= capital/interes;
+//        double ra= capital;
+//        double ci=0,  tci=0 , ta=0 , ca=0;
+//        tci=0;
+//        double exp = 0.083;
+//        double inte =0.0;
+//                inte=Math.pow((1+0.05),exp)-1;
+//        ta=0;
+//        for(int i =0 ; i< n ;i++){
+//                ci=ra*inte;
+//                tci=tci+ci;
+//                ca=cuota-ci;
+//                ta=ta+ca;
+//                ra=capital-ta;
+//                
+////                Pago     Cuota     C.Interés     C.Amortiz.     Tot.Amortiz.     Resto");"
+////                + "\" \"+(indice+1)+\"      \"+presenta(cuota)+\"      \"+presenta(ci)+\"      \"+presenta(ca)+\"      \"+presenta(ta)+\"      \"+presenta(ra));
+//        }
+//    }
 }
 
