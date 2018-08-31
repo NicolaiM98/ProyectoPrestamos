@@ -48,10 +48,33 @@ public class PagosDao extends AdaptadorDao<Pagos> {
         }
         return verificar;
     }
-
-public List<Pagos> listarPagosFrances() {
-        List<Pagos> lista = new ArrayList<>();
-
-return lista;
-}    
+     public  List CalcularFrances(double capital , int anios ){
+        double cuota = 0.0;
+        double interes;
+        int n = (anios * 12);
+        interes=((1-(Math.pow(1.004074, -120)))/0.004074);
+        cuota= capital/interes;
+        double  ta, ca, ci, ra, tci;
+        ta=0;
+        ra=capital;
+        tci=0;
+        List lista = new ArrayList<>();
+        for (int i=1;i <= n ;i++)
+            {
+                ci=ra*interes;
+                tci=tci+ci;
+                ca=cuota-ci;
+                ta=ta+ca;
+                ra=capital-ta;
+               
+                pagos.setNumeroCuotas(n);
+                pagos.setCuota(cuota);
+                pagos.setInteres(ci);
+                pagos.setAmortizacion(ca);
+                pagos.setSaldo(ra);
+//                lista.add(i,getPagos().setEstado(true) );
+            }  
+        return lista;
+    }
 }
+

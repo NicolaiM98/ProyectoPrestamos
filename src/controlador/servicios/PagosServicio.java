@@ -35,4 +35,7 @@ public class PagosServicio {
     public void fijarPagos(Pagos pagos) {
         obj.setPagos(pagos);
     } 
+    public  List CalcularFrances(double capital , int anios ){
+    return obj.CalcularFrances(capital, anios);
+    }
 }

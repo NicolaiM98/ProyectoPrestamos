@@ -29,7 +29,13 @@ public class Pagos implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaPago;
     @Column(length = 15)
+    private Double pago;
+    @Column(length = 15)
     private Double interes;
+    @Column(length = 15)
+    private Double amortizacion;
+    @Column(length = 15)
+    private Integer numeroCuotas;
     @Column(length = 15)
     private Double cuota;
     @Column(length = 15)

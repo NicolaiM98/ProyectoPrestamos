@@ -134,6 +134,11 @@ public class FrmLogin extends javax.swing.JDialog {
         tbn_cancel.setForeground(new java.awt.Color(0, 102, 153));
         tbn_cancel.setText("Cancelar");
         tbn_cancel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tbn_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tbn_cancelActionPerformed(evt);
+            }
+        });
         jPanel1.add(tbn_cancel);
         tbn_cancel.setBounds(190, 150, 70, 30);
         jPanel1.add(jSeparator2);
@@ -464,10 +469,10 @@ public class FrmLogin extends javax.swing.JDialog {
                 }
             } else {
                 if (ps.guardar()&& cs.guardar()&& cbs.guardar()) {
-                    UtilidadesComponente.mensajeOk("OK", "Se ha modificado correctamente");
+                    UtilidadesComponente.mensajeOk("!BIENVENID@¡", "Se ha registrado correctamente");
                     limpiar();
                 } else {
-                    UtilidadesComponente.mensajeError("Error", "No se pudo modificar");
+                    UtilidadesComponente.mensajeError("NO SE HA PODIDO REGISTRAR", "Revise que sus datos sean correctos");
                 }
             }
         }
@@ -575,7 +580,7 @@ public class FrmLogin extends javax.swing.JDialog {
     }//GEN-LAST:event_txt_regTelefFocusGained
 
     private void txt_regTelefFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_regTelefFocusLost
-        if ((txt_regTelef.getText().trim().length() < 9) || (txt_regTelef.getText().trim().length() > 10)) {
+        if ((txt_regTelef.getText().trim().length() < 7) || (txt_regTelef.getText().trim().length() > 10)) {
             UtilidadesComponente.mensajeError("Error", "El numero telefonico debe contener entre 9 y 10 dígitos");
         }
     }//GEN-LAST:event_txt_regTelefFocusLost
@@ -626,6 +631,11 @@ public class FrmLogin extends javax.swing.JDialog {
             inicioSesion();
         }
     }//GEN-LAST:event_txt_passKeyPressed
+
+    private void tbn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbn_cancelActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_tbn_cancelActionPerformed
 
     /**
      * @param args the command line arguments
