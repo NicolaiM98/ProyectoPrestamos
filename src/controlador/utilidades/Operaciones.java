@@ -42,8 +42,51 @@ public class Operaciones {
                 ta=ta+ca;
                 ra=capital-ta;
         }
-        mensaje += "Usted pagara una cuota de: " + cuota + "durante " + n + " periodos;\n ";
-        mensaje+= "El total de interes ah pagar sera: " +tci;
+        mensaje += "Usted pagara una cuota de: " + String.format("%.2f", cuota) + "durante " + n + " periodos mensuales\n ";
+        mensaje+= "El total de interes a pagar sera: " +String.format("%.2f",tci)+ "con un interes anual del 5%";
+        return mensaje;
+    }
+    public String CalcularAleman (double capital , int anios){
+        String mensaje="";
+        double amortizacion;
+        int n = anios*12;
+        amortizacion= capital/n;
+        double cuota=0;
+        double ra= capital;
+        double in=0;
+        double tci=0;
+        for(int i =0 ; i< n ;i++){
+            in = ra *0.05; 
+            tci= tci  +in;
+            cuota= in+ amortizacion;
+            ra= ra - amortizacion;        
+        }
+        mensaje += "Usted pagara una amortizacion de: " + String.format("%.2f", cuota) + "durante " + n + " periodos mensuales\n ";
+        mensaje+= "El total de interes a pagar sera: " +String.format("%.2f",tci);
+        return mensaje;
+    }
+     public String CalcularAmericano(double capital , int anios){
+        String mensaje="";
+        double amortizacion;
+        int n = anios;
+        double cuota=0;
+        cuota= capital*0.05;  
+        double ra= capital;
+        double in=cuota;
+        double tci=0;
+        for(int i =0 ; i< n ;i++){ 
+            if(i==n-1){
+            cuota=capital+in;
+            amortizacion= capital;
+            ra=0;
+            }else{
+            tci= tci + in;
+            amortizacion=0;
+            }
+        }       
+        
+        mensaje += "Usted pagara una cuota de: " + String.format("%.2f", cuota) + "durante " + n + " periodos anuales\n ";
+        mensaje+= "El total de interes a pagar sera: " +String.format("%.2f",tci);
         return mensaje;
     }
 }

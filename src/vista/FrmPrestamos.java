@@ -36,11 +36,12 @@ public class FrmPrestamos extends javax.swing.JDialog {
         initComponents();
     }
     private PrestamosServicio prs = new PrestamosServicio();
-    private PagosServicio pgs= new PagosServicio();
+    private PagosServicio pgs = new PagosServicio();
     private CuentaBancariaServicio cbs = new CuentaBancariaServicio();
-    private Utilidades ut= new Utilidades();
+    private Utilidades ut = new Utilidades();
     private ModeloTablaPagosFrances modelo = new ModeloTablaPagosFrances();
     private Operaciones op = new Operaciones();
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -263,113 +264,205 @@ public class FrmPrestamos extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-   
-    private void cargarTabla(){
-     //ps.fijarPrestamos((Prestamos) Sesion.getCuenta().getPersona().getCuentaBancaria().getListaPrestamos());
+    private void cargarTabla() {
+        //ps.fijarPrestamos((Prestamos) Sesion.getCuenta().getPersona().getCuentaBancaria().getListaPrestamos());
         modelo.setLista(pgs.todos());
-       // tbl_tabla.setModel(modelo);
-       // tbl_tabla.updateUI();
+        // tbl_tabla.setModel(modelo);
+        // tbl_tabla.updateUI();
     }
-    private void limpiar(){
-     txt_monto.setText("1000.00");
-     txt_anios.setText("1");
-     cbx_tipo.setSelectedIndex(0);
+
+    private void limpiar() {
+        txt_monto.setText("1000.00");
+        txt_anios.setText("1");
+        cbx_tipo.setSelectedIndex(0);
     }
-     private void guardarObjeto() {
+
+    private void guardarObjetoFrances() {
         cbs.fijarCuentaBancaria(Sesion.getCuenta().getPersona().getCuentaBancaria());
         prs.getPrestamos().setValorPrestamo(Double.parseDouble(txt_monto.getText()));
         prs.getPrestamos().setNumeroCuotas(Integer.parseInt(txt_anios.getText()));
         prs.getPrestamos().setSaldoTotal(Double.parseDouble(txt_monto.getText()));
-        prs.getPrestamos().setFechaLimite(ut.sumarAnios(new Date(),(Integer.parseInt(txt_anios.getText())) ));
+        prs.getPrestamos().setFechaLimite(ut.sumarAnios(new Date(), (Integer.parseInt(txt_anios.getText()))));
         pgs.getPagos().setAnios(Integer.parseInt(txt_anios.getText()));
         prs.getPrestamos().setTipo(cbx_tipo.getSelectedItem().toString());
         prs.getPrestamos().setCuentaBancaria(cbs.getCuentaBancaria());
-        prs.getPrestamos().setFechaEmision(new Date()); 
+        prs.getPrestamos().setFechaEmision(new Date());
         double cuota = 0.0;
         double interes;
         int n = ((Integer.parseInt(txt_anios.getText())) * 12);
-        interes=((1-(Math.pow(1.004074, -n)))/0.004074);
-        cuota= (Double.parseDouble(txt_monto.getText()))/interes;
-        double ra= (Double.parseDouble(txt_monto.getText()));
-        double ci=0,  tci=0 , ta=0 , ca=0;
-        tci=0;
+        interes = ((1 - (Math.pow(1.004074, -n))) / 0.004074);
+        cuota = (Double.parseDouble(txt_monto.getText())) / interes;
+        double ra = (Double.parseDouble(txt_monto.getText()));
+        double ci = 0, tci = 0, ta = 0, ca = 0;
+        tci = 0;
         double exp = 0.083;
-        double inte =0.0;
-                inte=Math.pow((1+0.05),exp)-1;
-        ta=0;
+        double inte = 0.0;
+        inte = Math.pow((1 + 0.05), exp) - 1;
+        ta = 0;
         Date fecha = new Date();
         prs.guardar();
-        for(int i =0 ; i< n ;i++){
-                ci=ra*inte;
-                tci=tci+ci;
-               ca=cuota-ci;
-                ta=ta+ca;
-                ra=(Double.parseDouble(txt_monto.getText()))-ta;   
-                fecha= ut.sumarMeses(fecha);
-                cbs.fijarCuentaBancaria(Sesion.getCuenta().getPersona().getCuentaBancaria());
-                pgs.getPagos().setId((long)(Math.random()));
-                pgs.getPagos().setNumeroCuotas(i+1);
-                pgs.getPagos().setInteres(ci);
-                pgs.getPagos().setCuota(cuota);
-                pgs.getPagos().setAmortizacion(ta);
-                pgs.getPagos().setSaldo(ra);
-                pgs.getPagos().setEstado(true);
-                pgs.getPagos().setFechaPago(fecha);
-                pgs.getPagos().setPrestamos(prs.getPrestamos());                
-                
+        for (int i = 0; i < n; i++) {
+            ci = ra * inte;
+            tci = tci + ci;
+            ca = cuota - ci;
+            ta = ta + ca;
+            ra = (Double.parseDouble(txt_monto.getText())) - ta;
+            fecha = ut.sumarMeses(fecha);
+            cbs.fijarCuentaBancaria(Sesion.getCuenta().getPersona().getCuentaBancaria());
+            pgs.getPagos().setId((long) (Math.random()));
+            pgs.getPagos().setNumeroCuotas(i + 1);
+            pgs.getPagos().setInteres(ci);
+            pgs.getPagos().setCuota(cuota);
+            pgs.getPagos().setAmortizacion(ta);
+            pgs.getPagos().setSaldo(ra);
+            pgs.getPagos().setEstado(true);
+            pgs.getPagos().setFechaPago(fecha);
+            pgs.getPagos().setPrestamos(prs.getPrestamos());
 
-                
-                    try {
-                       
-                       pgs.guardar(); 
-                    } 
-                    catch (Exception e) {
-                       UtilidadesComponente.mensajeError("ERROR", e.getMessage()); 
-                    }          
-                
-             
+            try {
+
+                pgs.guardar();
+            } catch (Exception e) {
+                UtilidadesComponente.mensajeError("ERROR", e.getMessage());
+            }
+
         }
         limpiar();
         UtilidadesComponente.mensajeOk("Se ha guardado correctamente", "");
     }
-     
-    
+
+    private void guardarObjetoAleman() {
+        cbs.fijarCuentaBancaria(Sesion.getCuenta().getPersona().getCuentaBancaria());
+        prs.getPrestamos().setValorPrestamo(Double.parseDouble(txt_monto.getText()));
+        prs.getPrestamos().setNumeroCuotas(Integer.parseInt(txt_anios.getText()));
+        prs.getPrestamos().setSaldoTotal(Double.parseDouble(txt_monto.getText()));
+        prs.getPrestamos().setFechaLimite(ut.sumarAnios(new Date(), (Integer.parseInt(txt_anios.getText()))));
+        pgs.getPagos().setAnios(Integer.parseInt(txt_anios.getText()));
+        prs.getPrestamos().setTipo(cbx_tipo.getSelectedItem().toString());
+        prs.getPrestamos().setCuentaBancaria(cbs.getCuentaBancaria());
+        prs.getPrestamos().setFechaEmision(new Date());
+        double cuota = 0.0;
+        int n = ((Integer.parseInt(txt_anios.getText())) * 12);
+        double amortizacion;
+        amortizacion = Double.parseDouble(txt_monto.getText()) / n;
+        double ra = Double.parseDouble(txt_monto.getText());
+        double in = 0;
+        double tci = 0;
+        Date fecha = new Date();
+        prs.guardar();
+        for (int i = 0; i < n; i++) {
+            in = ra * 0.05;
+            tci = tci + in;
+            cuota = in + amortizacion;
+            ra = ra - amortizacion;
+
+            fecha = ut.sumarMeses(fecha);
+            cbs.fijarCuentaBancaria(Sesion.getCuenta().getPersona().getCuentaBancaria());
+            pgs.getPagos().setId((long) (Math.random()));
+            pgs.getPagos().setNumeroCuotas(i + 1);
+            pgs.getPagos().setInteres(in);
+            pgs.getPagos().setCuota(cuota);
+            pgs.getPagos().setAmortizacion(amortizacion);
+            pgs.getPagos().setSaldo(ra);
+            pgs.getPagos().setEstado(true);
+            pgs.getPagos().setFechaPago(fecha);
+            pgs.getPagos().setPrestamos(prs.getPrestamos());
+            try {
+
+                pgs.guardar();
+            } catch (Exception e) {
+                UtilidadesComponente.mensajeError("ERROR", e.getMessage());
+            }
+        }
+        limpiar();
+        UtilidadesComponente.mensajeOk("Se ha guardado correctamente", "");
+    }
+    private void guardarObjetoAmericano() {
+        cbs.fijarCuentaBancaria(Sesion.getCuenta().getPersona().getCuentaBancaria());
+        prs.getPrestamos().setValorPrestamo(Double.parseDouble(txt_monto.getText()));
+        prs.getPrestamos().setNumeroCuotas(Integer.parseInt(txt_anios.getText()));
+        prs.getPrestamos().setSaldoTotal(Double.parseDouble(txt_monto.getText()));
+        prs.getPrestamos().setFechaLimite(ut.sumarAnios(new Date(), (Integer.parseInt(txt_anios.getText()))));
+        pgs.getPagos().setAnios(Integer.parseInt(txt_anios.getText()));
+        prs.getPrestamos().setTipo(cbx_tipo.getSelectedItem().toString());
+        prs.getPrestamos().setCuentaBancaria(cbs.getCuentaBancaria());
+        prs.getPrestamos().setFechaEmision(new Date());
+        double cuota = 0.0;
+        int n = (Integer.parseInt(txt_anios.getText()));
+        double amortizacion;
+        cuota= Double.parseDouble(txt_monto.getText())*0.05;  
+        double ra= Double.parseDouble(txt_monto.getText());
+        double in=cuota;
+        double tci=0;
+        Date fecha = new Date();
+        prs.guardar();
+        for(int i =0 ; i< n ;i++){ 
+            if(i==n-1){
+            cuota=Double.parseDouble(txt_monto.getText())+in;
+            amortizacion= Double.parseDouble(txt_monto.getText());
+            ra=0;
+            }else{
+            tci= tci + in;
+            amortizacion=0;
+            }
+            fecha = ut.sumarMeses(fecha);
+            cbs.fijarCuentaBancaria(Sesion.getCuenta().getPersona().getCuentaBancaria());
+            pgs.getPagos().setId((long) (Math.random()));
+            pgs.getPagos().setNumeroCuotas(i + 1);
+            pgs.getPagos().setInteres(in);
+            pgs.getPagos().setCuota(cuota);
+            pgs.getPagos().setAmortizacion(amortizacion);
+            pgs.getPagos().setSaldo(ra);
+            pgs.getPagos().setEstado(true);
+            pgs.getPagos().setFechaPago(fecha);
+            pgs.getPagos().setPrestamos(prs.getPrestamos());
+            try {
+                pgs.guardar();
+            } catch (Exception e) {
+                UtilidadesComponente.mensajeError("ERROR", e.getMessage());
+            }
+        } 
+        limpiar();
+        UtilidadesComponente.mensajeOk("Se ha guardado correctamente", "");
+    }
+
+
     private void cbx_tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_tipoActionPerformed
-     
+
     }//GEN-LAST:event_cbx_tipoActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    new FrmPrincipal().setVisible(true);
-                dispose();
+        new FrmPrincipal().setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void txt_montoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_montoFocusGained
-         txt_monto.setToolTipText("El monto debe ser un numero decimal");
+        txt_monto.setToolTipText("El monto debe ser un numero decimal");
     }//GEN-LAST:event_txt_montoFocusGained
 
     private void txt_montoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_montoFocusLost
-        if( (Double.parseDouble(txt_monto.getText())>500000.00)||(Double.parseDouble(txt_monto.getText())<1000.00)){
-            UtilidadesComponente.mensajeError("Error", "Ingrese una cantidad valida ");}
+        if ((Double.parseDouble(txt_monto.getText()) > 500000.00) || (Double.parseDouble(txt_monto.getText()) < 1000.00)) {
+            UtilidadesComponente.mensajeError("Error", "Ingrese una cantidad valida ");
+        }
     }//GEN-LAST:event_txt_montoFocusLost
 
     private void txt_montoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_montoKeyTyped
-         char c = evt.getKeyChar();
+        char c = evt.getKeyChar();
         if (Character.isLetter(c)) {
             getToolkit().beep();
-            evt.consume();}
+            evt.consume();
+        }
     }//GEN-LAST:event_txt_montoKeyTyped
 
     private void btn_solicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_solicitarActionPerformed
-        guardarObjeto();
-        if(cbx_tipo.getSelectedItem().toString().toLowerCase().equals("americano")){
-       
-       }
-       else if(cbx_tipo.getSelectedItem().toString().toLowerCase().equals("frances")){
-      
-       }
-       else{
-           
-       }
+
+        if (cbx_tipo.getSelectedItem().toString().toLowerCase().equals("americano")) {
+            guardarObjetoAmericano();
+        } else if (cbx_tipo.getSelectedItem().toString().toLowerCase().equals("frances")) {
+            guardarObjetoFrances();
+        } else {
+            guardarObjetoAleman();
+        }
     }//GEN-LAST:event_btn_solicitarActionPerformed
 
     private void txt_aniosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_aniosFocusGained
@@ -377,28 +470,28 @@ public class FrmPrestamos extends javax.swing.JDialog {
     }//GEN-LAST:event_txt_aniosFocusGained
 
     private void txt_aniosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_aniosFocusLost
-       if( (Integer.parseInt(txt_anios.getText())>10)||(Integer.parseInt(txt_anios.getText())<1)){
+        if ((Integer.parseInt(txt_anios.getText()) > 10) || (Integer.parseInt(txt_anios.getText()) < 1)) {
             UtilidadesComponente.mensajeError("Error", "Ingrese una cantidad valida ");
-        }else{}
+        } else {
+        }
     }//GEN-LAST:event_txt_aniosFocusLost
 
     private void txt_aniosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_aniosKeyTyped
         char c = evt.getKeyChar();
         if (Character.isLetter(c)) {
             getToolkit().beep();
-            evt.consume();}
+            evt.consume();
+        }
     }//GEN-LAST:event_txt_aniosKeyTyped
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       if(cbx_tipo.getSelectedItem().toString().toLowerCase().equals("americano")){
-       
-       }
-       else if(cbx_tipo.getSelectedItem().toString().toLowerCase().equals("frances")){
-       txt_calcular.setText(op.CalcularFrances(Double.parseDouble(txt_monto.getText()) , Integer.parseInt(txt_anios.getText()) ));
-       }
-       else{
-           
-       }
+        if (cbx_tipo.getSelectedItem().toString().toLowerCase().equals("americano")) {
+            txt_calcular.setText(op.CalcularAmericano(Double.parseDouble(txt_monto.getText()), Integer.parseInt(txt_anios.getText())));
+        } else if (cbx_tipo.getSelectedItem().toString().toLowerCase().equals("frances")) {
+            txt_calcular.setText(op.CalcularFrances(Double.parseDouble(txt_monto.getText()), Integer.parseInt(txt_anios.getText())));
+        } else {
+            txt_calcular.setText(op.CalcularAleman(Double.parseDouble(txt_monto.getText()), Integer.parseInt(txt_anios.getText())));
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -415,9 +508,8 @@ public class FrmPrestamos extends javax.swing.JDialog {
             // select Look and Feel
             UIManager.setLookAndFeel("com.jtattoo.plaf.mint.MintLookAndFeel");
             // start application
-           ;
-        }
-        catch (Exception ex) {
+            ;
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
         try {
