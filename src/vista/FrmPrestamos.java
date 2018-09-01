@@ -18,6 +18,8 @@ import modelo.Prestamos;
 import vista.utilidades.UtilidadesComponente;
 import controlador.utilidades.Utilidades;
 import controlador.utilidades.Operaciones;
+import javafx.beans.binding.Bindings;
+import javax.persistence.Convert;
 import vista.tablas.ModeloTablaPagosFrances;
 
 /**
@@ -273,7 +275,7 @@ public class FrmPrestamos extends javax.swing.JDialog {
      txt_anios.setText("1");
      cbx_tipo.setSelectedIndex(0);
     }
-     private void cargarObjeto() {
+     private void guardarObjeto() {
         cbs.fijarCuentaBancaria(Sesion.getCuenta().getPersona().getCuentaBancaria());
         prs.getPrestamos().setValorPrestamo(Double.parseDouble(txt_monto.getText()));
         prs.getPrestamos().setNumeroCuotas(Integer.parseInt(txt_anios.getText()));
@@ -295,48 +297,43 @@ public class FrmPrestamos extends javax.swing.JDialog {
         double inte =0.0;
                 inte=Math.pow((1+0.05),exp)-1;
         ta=0;
+        Date fecha = new Date();
+        prs.guardar();
         for(int i =0 ; i< n ;i++){
                 ci=ra*inte;
                 tci=tci+ci;
-                ca=cuota-ci;
+               ca=cuota-ci;
                 ta=ta+ca;
-                ra=(Double.parseDouble(txt_monto.getText()))-ta;
-               
-                
+                ra=(Double.parseDouble(txt_monto.getText()))-ta;   
+                fecha= ut.sumarMeses(fecha);
+                cbs.fijarCuentaBancaria(Sesion.getCuenta().getPersona().getCuentaBancaria());
+                pgs.getPagos().setId((long)(Math.random()));
                 pgs.getPagos().setNumeroCuotas(i+1);
                 pgs.getPagos().setInteres(ci);
                 pgs.getPagos().setCuota(cuota);
                 pgs.getPagos().setAmortizacion(ta);
                 pgs.getPagos().setSaldo(ra);
                 pgs.getPagos().setEstado(true);
-                pgs.getPagos().setFechaPago(ut.sumarMeses(new Date()));
-                pgs.getPagos().setPrestamos(prs.getPrestamos());
+                pgs.getPagos().setFechaPago(fecha);
+                pgs.getPagos().setPrestamos(prs.getPrestamos());                
                 
-        }
-    }
 
-    private void guardar() {
-        String mensaje = "Se requiere este campo";
-        if (!UtilidadesComponente.mostrarError(txt_monto, "Falta este dato", 'r')
-                && !UtilidadesComponente.mostrarError(txt_anios, "Falta este dato", 'r')) {
-                cargarObjeto();
-            if (prs.getPrestamos().getId() != null) {
-                if (prs.guardar()&& pgs.guardar()/*&& cbs.guardar()*/) {
-                    UtilidadesComponente.mensajeOk("Se ha guardado correctamente", "");
-                    limpiar();
-                } else {
-                    UtilidadesComponente.mensajeError("Error", "No se pudo guardar");
-                }
-            } else {
-                if (prs.guardar()&&pgs.guardar()) {
-                    UtilidadesComponente.mensajeOk("OK", "Su Prestamo solicitado se ha generado correctamente");
-                    limpiar();
-                } else {
-                    UtilidadesComponente.mensajeError("Error", "Error al momento de Solicitar su prestamo");
-                }
-            }
+                
+                    try {
+                       
+                       pgs.guardar(); 
+                    } 
+                    catch (Exception e) {
+                       UtilidadesComponente.mensajeError("ERROR", e.getMessage()); 
+                    }          
+                
+             
         }
+        limpiar();
+        UtilidadesComponente.mensajeOk("Se ha guardado correctamente", "");
     }
+     
+    
     private void cbx_tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_tipoActionPerformed
      
     }//GEN-LAST:event_cbx_tipoActionPerformed
@@ -352,10 +349,7 @@ public class FrmPrestamos extends javax.swing.JDialog {
 
     private void txt_montoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_montoFocusLost
         if( (Double.parseDouble(txt_monto.getText())>500000.00)||(Double.parseDouble(txt_monto.getText())<1000.00)){
-            UtilidadesComponente.mensajeError("Error", "Ingrese una cantidad valida ");
-        }else{
-        //calcular cuotas
-        }
+            UtilidadesComponente.mensajeError("Error", "Ingrese una cantidad valida ");}
     }//GEN-LAST:event_txt_montoFocusLost
 
     private void txt_montoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_montoKeyTyped
@@ -366,7 +360,16 @@ public class FrmPrestamos extends javax.swing.JDialog {
     }//GEN-LAST:event_txt_montoKeyTyped
 
     private void btn_solicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_solicitarActionPerformed
-        guardar();
+        guardarObjeto();
+        if(cbx_tipo.getSelectedItem().toString().toLowerCase().equals("americano")){
+       
+       }
+       else if(cbx_tipo.getSelectedItem().toString().toLowerCase().equals("frances")){
+      
+       }
+       else{
+           
+       }
     }//GEN-LAST:event_btn_solicitarActionPerformed
 
     private void txt_aniosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_aniosFocusGained
