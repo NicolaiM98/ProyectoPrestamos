@@ -23,7 +23,7 @@ public class ModeloTablaPagosAleman extends AbstractTableModel{
 
     @Override
     public int getColumnCount() {
-        return 6;
+        return 7;
     }
     @Override
     public int getRowCount() {
@@ -43,6 +43,13 @@ public class ModeloTablaPagosAleman extends AbstractTableModel{
             case 3: return p.getPago();
             case 4: return p.getAmortizacion();
             case 5: return p.getSaldo();
+            case 7: if(p.getEstado()== true){
+            return "No Pagado";
+            }
+            else{
+            return "Pagado";
+            } 
+            case 6: return p.getId();
             default: return null; 
         }
     }
@@ -56,6 +63,7 @@ public class ModeloTablaPagosAleman extends AbstractTableModel{
             case 3: return "Pago";
             case 4: return "Amortizacion";
             case 5: return "Saldo Pendiente";
+            case 7: return "Estado";
             default: return null; 
         }
     }

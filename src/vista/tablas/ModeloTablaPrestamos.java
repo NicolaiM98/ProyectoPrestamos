@@ -40,6 +40,7 @@ public class ModeloTablaPrestamos extends AbstractTableModel {
             case 3: return p.getSaldoPendiente();
             case 4: return p.getSaldoTotal();
             case 5: return p.getTipo();
+            case 6: return p.getId();
             default: return null; 
         }
     }

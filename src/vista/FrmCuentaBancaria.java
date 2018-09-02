@@ -32,6 +32,7 @@ public class FrmCuentaBancaria extends javax.swing.JDialog {
         initComponents();
         cargarDatos();
         cargarTablaPrestamos();
+        btn_prestamos.setVisible(false);
         
     }
     private PersonaServicio ps = new PersonaServicio();
@@ -43,27 +44,30 @@ public class FrmCuentaBancaria extends javax.swing.JDialog {
     private ModeloTablaPagosAmericano modelopa = new ModeloTablaPagosAmericano();
     private ModeloTablaPagosAleman modelopal = new ModeloTablaPagosAleman();
     private ModeloTablaPagosFrances modelofr = new ModeloTablaPagosFrances();
+    private boolean bandera = true;
+    
      private void cargarTablaPrestamos(){
      //ps.fijarPrestamos((Prestamos) Sesion.getCuenta().getPersona().getCuentaBancaria().getListaPrestamos());
         modelopr.setLista(prs.listarPrestamos());
         tbl_tabla.setModel(modelopr);
         tbl_tabla.updateUI();
     }
-     private void cargarTablaPagos(){
-    
-    if(prs.getPrestamos().getTipo().equals("americano")){
-      modelopa.setLista(pgs.listarPagos());
+     private void cargarTablaPagos( String dato , String tipo){ 
+         
+      if(tipo.toLowerCase().equals("americano")){
+        modelopa.setLista(pgs.listarPagos(dato));
         tbl_tabla.setModel(modelopa);
         tbl_tabla.updateUI();}
-     if(prs.getPrestamos().getTipo().equals("frances")){
-      modelofr.setLista(pgs.listarPagos());
+      if(tipo.toLowerCase().equals("frances")){
+         modelofr.setLista(pgs.listarPagos(dato));
         tbl_tabla.setModel(modelofr);
         tbl_tabla.updateUI();}
-     else if(prs.getPrestamos().getTipo().equals("aleman")){
-        modelopal.setLista(pgs.listarPagos());
+     else if(tipo.toLowerCase().equals("aleman")){
+        modelopal.setLista(pgs.listarPagos(dato));
         tbl_tabla.setModel(modelopal);
         tbl_tabla.updateUI();}
      }
+     
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -87,6 +91,7 @@ public class FrmCuentaBancaria extends javax.swing.JDialog {
         txt_nomb = new javax.swing.JTextField();
         txt_nrocuenta = new javax.swing.JTextField();
         txt_telef = new javax.swing.JTextField();
+        btn_prestamos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -147,6 +152,13 @@ public class FrmCuentaBancaria extends javax.swing.JDialog {
         txt_telef.setEditable(false);
         txt_telef.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        btn_prestamos.setText("Ver Prestamos");
+        btn_prestamos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_prestamosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -182,7 +194,9 @@ public class FrmCuentaBancaria extends javax.swing.JDialog {
                     .addComponent(jSeparator2))
                 .addGap(22, 22, 22))
             .addGroup(layout.createSequentialGroup()
-                .addGap(242, 242, 242)
+                .addGap(99, 99, 99)
+                .addComponent(btn_prestamos)
+                .addGap(70, 70, 70)
                 .addComponent(btn_volverCuentaB, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -216,7 +230,9 @@ public class FrmCuentaBancaria extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_volverCuentaB, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_volverCuentaB, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_prestamos))
                 .addGap(18, 18, 18))
         );
 
@@ -230,10 +246,24 @@ public class FrmCuentaBancaria extends javax.swing.JDialog {
     }//GEN-LAST:event_btn_volverCuentaBActionPerformed
 
     private void tbl_tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_tablaMouseClicked
-        if (evt.getClickCount() >=2) {
-        cargarTablaPagos();
+        if (evt.getClickCount() >=2 && bandera==true) {
+            bandera = false;
+            Object dato = modelopr.getValueAt(tbl_tabla.getSelectedRow(), 6);
+            Object tipo = modelopr.getValueAt(tbl_tabla.getSelectedRow(), 5);
+            cargarTablaPagos(dato.toString(), tipo.toString());
+        }
+        else if (evt.getClickCount() >=2 && bandera==false)
+        {     
+            btn_prestamos.setVisible(true);
+            Object datoIdPago = modelopr.getValueAt(tbl_tabla.getSelectedRow(), 6);
+            pgs.realizarPago(datoIdPago.toString());
         }
     }//GEN-LAST:event_tbl_tablaMouseClicked
+
+    private void btn_prestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_prestamosActionPerformed
+      bandera= true;
+      btn_prestamos.setVisible(false);
+    }//GEN-LAST:event_btn_prestamosActionPerformed
     private void cargarDatos(){
     ps.fijarPersona(Sesion.getCuenta().getPersona());
     cbs.fijarCuentaBancaria(Sesion.getCuenta().getPersona().getCuentaBancaria());
@@ -293,6 +323,7 @@ public class FrmCuentaBancaria extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_prestamos;
     private javax.swing.JButton btn_volverCuentaB;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

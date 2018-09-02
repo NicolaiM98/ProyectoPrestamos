@@ -51,17 +51,25 @@ public class PagosDao extends AdaptadorDao<Pagos> {
         }
         return verificar;
     } 
-     public List<Pagos> listarPagos() {
+     public List<Pagos> listarPagos(String dato) {
         List<Pagos> lista = new ArrayList<>();
         try {
-            Query q = getManager().createQuery("SELECT p FROM Pagos p where p.prestamos.id = :id"); 
-            q.setParameter("id", getPagos().getPrestamos().getId());
+            Query q = getManager().createQuery("SELECT p FROM Pagos p where p.prestamos.id  = :id"); 
+            q.setParameter("id", Long.parseLong(dato));
             lista = q.getResultList();
         } catch (Exception e) {
             System.out.println("error "+e);
         }
         return lista;
     }
+     public void realizarPago(String datoP){
+     try {
+            Query q = getManager().createQuery("Update Pagos set estado = false where id  = :id"); 
+            q.setParameter("id", Long.parseLong(datoP));
+        } catch (Exception e) {
+            System.out.println("error "+e);
+        }
+     }
 }
 
 

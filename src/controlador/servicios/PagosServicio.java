@@ -38,7 +38,10 @@ public class PagosServicio {
     public void fijarPagos(Pagos pagos) {
         obj.setPagos(pagos);
     } 
-    public List<Pagos> listarPagos() {
-        return  obj.listarPagos();
+    public List<Pagos> listarPagos(String dato) {
+        return  obj.listarPagos( dato);
+    }
+    public void realizarPago(String datoP){
+     obj.realizarPago(datoP);
     }
 }

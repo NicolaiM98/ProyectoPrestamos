@@ -38,11 +38,17 @@ public class ModeloTablaPagosAmericano extends AbstractTableModel {
                 for(int i=1;i<=p.getAnios();i++){
                 return i;
                 }  
-            case 1: return p.getEstado();
+            case 1: if(p.getEstado()== true){
+            return "No Pagado";
+            }
+            else{
+            return "Pagado";
+            }         
             case 2: return p.getInteres();
             case 3: return p.getCuota();
             case 4: return p.getAmortizacion();
             case 5: return p.getSaldo();
+            case 6: return p.getId();
             default: return null; 
         }
     }

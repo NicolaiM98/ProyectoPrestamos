@@ -39,7 +39,13 @@ public class ModeloTablaPagosFrances extends AbstractTableModel{
             case 2: return p.getCuota();
             case 3: return p.getAmortizacion();
             case 4: return p.getSaldo();
-            case 5: return p.getEstado();
+            case 5: if(p.getEstado()== true){
+            return "No Pagado";
+            }
+            else{
+            return "Pagado";
+            }
+            case 6: return p.getId();
             default: return null; 
         }
     }
