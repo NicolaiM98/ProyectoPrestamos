@@ -20,7 +20,6 @@ public class Operaciones {
     private PagosServicio pgs= new PagosServicio();
     private CuentaBancariaServicio cbs = new CuentaBancariaServicio();
     private Utilidades ut= new Utilidades();
- 
     public String CalcularFrances (double capital , int anios){
         String mensaje="";
         double cuota = 0.0;

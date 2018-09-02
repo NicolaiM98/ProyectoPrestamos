@@ -18,6 +18,7 @@ import modelo.Prestamos;
 import vista.utilidades.UtilidadesComponente;
 import controlador.utilidades.Utilidades;
 import controlador.utilidades.Operaciones;
+import java.text.DecimalFormat;
 import javafx.beans.binding.Bindings;
 import javax.persistence.Convert;
 import vista.tablas.ModeloTablaPagosFrances;
@@ -41,7 +42,6 @@ public class FrmPrestamos extends javax.swing.JDialog {
     private Utilidades ut = new Utilidades();
     private ModeloTablaPagosFrances modelo = new ModeloTablaPagosFrances();
     private Operaciones op = new Operaciones();
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -264,13 +264,6 @@ public class FrmPrestamos extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cargarTabla() {
-        //ps.fijarPrestamos((Prestamos) Sesion.getCuenta().getPersona().getCuentaBancaria().getListaPrestamos());
-        modelo.setLista(pgs.todos());
-        // tbl_tabla.setModel(modelo);
-        // tbl_tabla.updateUI();
-    }
-
     private void limpiar() {
         txt_monto.setText("1000.00");
         txt_anios.setText("1");
@@ -304,6 +297,7 @@ public class FrmPrestamos extends javax.swing.JDialog {
         for (int i = 0; i < n; i++) {
             if( i == n-1){
             ci = ra * inte;
+            cuota= ra;
             tci = tci + ci;
             ca = cuota - ci;
             ta = ta + ca;
@@ -319,10 +313,10 @@ public class FrmPrestamos extends javax.swing.JDialog {
             cbs.fijarCuentaBancaria(Sesion.getCuenta().getPersona().getCuentaBancaria());
             pgs.getPagos().setId((long) (Math.random()));
             pgs.getPagos().setNumeroCuotas(i + 1);
-            pgs.getPagos().setInteres(ci);
-            pgs.getPagos().setCuota(cuota);
-            pgs.getPagos().setAmortizacion(ta);
-            pgs.getPagos().setSaldo(ra);
+            pgs.getPagos().setInteres(Math.round(ci * 100) / 100d);
+            pgs.getPagos().setCuota(Math.round(cuota * 100) / 100d);
+            pgs.getPagos().setAmortizacion(Math.round(ta * 100) / 100d);
+            pgs.getPagos().setSaldo(Math.round(ra * 100) / 100d);
             pgs.getPagos().setEstado(true);
             pgs.getPagos().setFechaPago(fecha);
             pgs.getPagos().setPrestamos(prs.getPrestamos());
@@ -371,10 +365,10 @@ public class FrmPrestamos extends javax.swing.JDialog {
             cbs.fijarCuentaBancaria(Sesion.getCuenta().getPersona().getCuentaBancaria());
             pgs.getPagos().setId((long) (Math.random()));
             pgs.getPagos().setNumeroCuotas(i + 1);
-            pgs.getPagos().setInteres(in);
-            pgs.getPagos().setCuota(cuota);
-            pgs.getPagos().setAmortizacion(amortizacion);
-            pgs.getPagos().setSaldo(ra);
+            pgs.getPagos().setInteres(Math.round(in * 100) / 100d);
+            pgs.getPagos().setCuota(Math.round(cuota * 100) / 100d);
+            pgs.getPagos().setAmortizacion(Math.round(amortizacion * 100) / 100d);
+            pgs.getPagos().setSaldo(Math.round(ra * 100) / 100d);
             pgs.getPagos().setEstado(true);
             pgs.getPagos().setFechaPago(fecha);
             pgs.getPagos().setPrestamos(prs.getPrestamos());
@@ -420,10 +414,10 @@ public class FrmPrestamos extends javax.swing.JDialog {
             cbs.fijarCuentaBancaria(Sesion.getCuenta().getPersona().getCuentaBancaria());
             pgs.getPagos().setId((long) (Math.random()));
             pgs.getPagos().setNumeroCuotas(i + 1);
-            pgs.getPagos().setInteres(in);
-            pgs.getPagos().setCuota(cuota);
-            pgs.getPagos().setAmortizacion(amortizacion);
-            pgs.getPagos().setSaldo(ra);
+            pgs.getPagos().setInteres(Math.round(in * 100) / 100d);
+            pgs.getPagos().setCuota(Math.round(cuota * 100) / 100d);
+            pgs.getPagos().setAmortizacion(Math.round(amortizacion * 100) / 100d);
+            pgs.getPagos().setSaldo(Math.round(ra * 100) / 100d);
             pgs.getPagos().setEstado(true);
             pgs.getPagos().setFechaPago(fecha);
             pgs.getPagos().setPrestamos(prs.getPrestamos());

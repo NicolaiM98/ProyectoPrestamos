@@ -40,7 +40,6 @@ public class ModeloTablaPagosAleman extends AbstractTableModel{
                 }   
             case 1: return p.getInteres();
             case 2: return p.getCuota();
-            case 3: return p.getPago();
             case 4: return p.getAmortizacion();
             case 5: return p.getSaldo();
             case 7: if(p.getEstado()== true){
@@ -60,7 +59,6 @@ public class ModeloTablaPagosAleman extends AbstractTableModel{
             case 0: return "Numero de Periodos";            
             case 1: return "Interes";
             case 2: return "Cuota";            
-            case 3: return "Pago";
             case 4: return "Amortizacion";
             case 5: return "Saldo Pendiente";
             case 7: return "Estado";

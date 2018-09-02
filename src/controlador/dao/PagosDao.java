@@ -66,6 +66,9 @@ public class PagosDao extends AdaptadorDao<Pagos> {
      try {
             Query q = getManager().createQuery("Update Pagos set estado = false where id  = :id"); 
             q.setParameter("id", Long.parseLong(datoP));
+            getManager().getTransaction().begin();
+            q.executeUpdate();
+            getManager().getTransaction().commit();
         } catch (Exception e) {
             System.out.println("error "+e);
         }

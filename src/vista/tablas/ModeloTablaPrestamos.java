@@ -23,7 +23,7 @@ public class ModeloTablaPrestamos extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 6;
+        return 5;
     }
     @Override
     public int getRowCount() {
@@ -37,10 +37,9 @@ public class ModeloTablaPrestamos extends AbstractTableModel {
             case 0: return p.getNumeroCuotas();
             case 1: return p.getFechaEmision();
             case 2: return p.getFechaLimite();
-            case 3: return p.getSaldoPendiente();
-            case 4: return p.getSaldoTotal();
-            case 5: return p.getTipo();
-            case 6: return p.getId();
+            case 3: return p.getSaldoTotal();
+            case 4: return p.getTipo();
+            case 5: return p.getId();
             default: return null; 
         }
     }
@@ -51,9 +50,8 @@ public class ModeloTablaPrestamos extends AbstractTableModel {
             case 0: return "Numero de Cuotas";
             case 1: return "Fecha de emision";
             case 2: return "Fecha limite";
-            case 3: return "Saldo Pendiente";
-            case 4: return "Saldo Total";
-            case 5: return "Tipo";
+            case 3: return "Saldo Total";
+            case 4: return "Tipo";
             default: return null; 
         }
     }

@@ -35,11 +35,7 @@ public class Prestamos implements Serializable {
     @Column(length = 10)
     private Double saldoTotal;
     @Column(length = 10)
-    private Double saldoPendiente;
-    @Column(length = 10)
     private Double valorPrestamo;
-    @Column(length = 10)
-    private Double interes;
     @Column(length = 50)
     private String tipo;
     private Boolean estado=true;

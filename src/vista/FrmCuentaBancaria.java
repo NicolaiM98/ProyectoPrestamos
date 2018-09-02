@@ -17,6 +17,7 @@ import vista.tablas.ModeloTablaPagosAleman;
 import vista.tablas.ModeloTablaPagosAmericano;
 import vista.tablas.ModeloTablaPagosFrances;
 import vista.tablas.ModeloTablaPrestamos;
+import vista.utilidades.UtilidadesComponente;
 
 /**
  *
@@ -45,6 +46,7 @@ public class FrmCuentaBancaria extends javax.swing.JDialog {
     private ModeloTablaPagosAleman modelopal = new ModeloTablaPagosAleman();
     private ModeloTablaPagosFrances modelofr = new ModeloTablaPagosFrances();
     private boolean bandera = true;
+    private Object tipo = null;
     
      private void cargarTablaPrestamos(){
      //ps.fijarPrestamos((Prestamos) Sesion.getCuenta().getPersona().getCuentaBancaria().getListaPrestamos());
@@ -59,7 +61,7 @@ public class FrmCuentaBancaria extends javax.swing.JDialog {
         tbl_tabla.setModel(modelopa);
         tbl_tabla.updateUI();}
       if(tipo.toLowerCase().equals("frances")){
-         modelofr.setLista(pgs.listarPagos(dato));
+        modelofr.setLista(pgs.listarPagos(dato));
         tbl_tabla.setModel(modelofr);
         tbl_tabla.updateUI();}
      else if(tipo.toLowerCase().equals("aleman")){
@@ -248,15 +250,28 @@ public class FrmCuentaBancaria extends javax.swing.JDialog {
     private void tbl_tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_tablaMouseClicked
         if (evt.getClickCount() >=2 && bandera==true) {
             bandera = false;
-            Object dato = modelopr.getValueAt(tbl_tabla.getSelectedRow(), 6);
-            Object tipo = modelopr.getValueAt(tbl_tabla.getSelectedRow(), 5);
+            Object dato = modelopr.getValueAt(tbl_tabla.getSelectedRow(), 5);
+            tipo = modelopr.getValueAt(tbl_tabla.getSelectedRow(), 4);
             cargarTablaPagos(dato.toString(), tipo.toString());
-        }
-        else if (evt.getClickCount() >=2 && bandera==false)
-        {     
             btn_prestamos.setVisible(true);
-            Object datoIdPago = modelopr.getValueAt(tbl_tabla.getSelectedRow(), 6);
-            pgs.realizarPago(datoIdPago.toString());
+        }
+        else if(evt.getClickCount() >=2 && bandera==false)   
+        {  
+            if(tipo.toString().toLowerCase().equals("americano")){
+         Object datoIdPagoamr = modelopa.getValueAt(tbl_tabla.getSelectedRow(), 6);
+            pgs.realizarPago(datoIdPagoamr.toString());
+                UtilidadesComponente.mensajeOk("Pago Realizado", "Su pago se ah realizado correctamente");
+            }
+            if(tipo.toString().toLowerCase().equals("frances")){
+             Object datoIdPagofr = modelofr.getValueAt(tbl_tabla.getSelectedRow(), 6);
+            pgs.realizarPago(datoIdPagofr.toString());
+            UtilidadesComponente.mensajeOk("Pago Realizado", "Su pago se ah realizado correctamente");
+            }
+            else if(tipo.toString().toLowerCase().equals("aleman")){
+            Object datoIdPagoal = modelopal.getValueAt(tbl_tabla.getSelectedRow(), 6);
+            pgs.realizarPago(datoIdPagoal.toString());
+            UtilidadesComponente.mensajeOk("Pago Realizado", "Su pago se ah realizado correctamente");
+            }
         }
     }//GEN-LAST:event_tbl_tablaMouseClicked
 
