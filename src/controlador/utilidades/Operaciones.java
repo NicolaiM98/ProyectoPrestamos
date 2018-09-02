@@ -42,8 +42,8 @@ public class Operaciones {
                 ta=ta+ca;
                 ra=capital-ta;
         }
-        mensaje += "Usted pagara una cuota de: " + String.format("%.2f", cuota) + "durante " + n + " periodos mensuales\n ";
-        mensaje+= "El total de interes a pagar sera: " +String.format("%.2f",tci)+ "con un interes anual del 5%";
+        mensaje += "Usted pagara una cuota de: " + String.format("%.2f", cuota) + " durante " + n + " periodos mensuales\n ";
+        mensaje+= "El total de interes a pagar sera: " +String.format("%.2f",tci)+ " con un interes anual del 5%";
         return mensaje;
     }
     public String CalcularAleman (double capital , int anios){
@@ -61,7 +61,7 @@ public class Operaciones {
             cuota= in+ amortizacion;
             ra= ra - amortizacion;        
         }
-        mensaje += "Usted pagara una amortizacion de: " + String.format("%.2f", cuota) + "durante " + n + " periodos mensuales\n ";
+        mensaje += "Usted pagara una amortizacion de: " + String.format("%.2f", cuota) + " durante " + n + " periodos mensuales\n ";
         mensaje+= "El total de interes a pagar sera: " +String.format("%.2f",tci);
         return mensaje;
     }
@@ -74,8 +74,8 @@ public class Operaciones {
         double ra= capital;
         double in=cuota;
         double tci=0;
-        for(int i =0 ; i< n ;i++){ 
-            if(i==n-1){
+        for(int i =0 ; i<= n ;i++){ 
+            if(i==n){
             cuota=capital+in;
             amortizacion= capital;
             ra=0;
@@ -85,7 +85,7 @@ public class Operaciones {
             }
         }       
         
-        mensaje += "Usted pagara una cuota de: " + String.format("%.2f", cuota) + "durante " + n + " periodos anuales\n ";
+        mensaje += "Usted pagara una cuota de: " + String.format("%.2f", cuota) + " durante " + n + " periodos anuales\n ";
         mensaje+= "El total de interes a pagar sera: " +String.format("%.2f",tci);
         return mensaje;
     }

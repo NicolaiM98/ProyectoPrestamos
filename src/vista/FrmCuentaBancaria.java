@@ -7,11 +7,15 @@ package vista;
 
 import controlador.servicios.CuentaBancariaServicio;
 import controlador.servicios.CuentaServicio;
+import controlador.servicios.PagosServicio;
 import controlador.servicios.PersonaServicio;
 import controlador.servicios.PrestamosServicio;
 import controlador.utilidades.Sesion;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
+import vista.tablas.ModeloTablaPagosAleman;
+import vista.tablas.ModeloTablaPagosAmericano;
+import vista.tablas.ModeloTablaPagosFrances;
 import vista.tablas.ModeloTablaPrestamos;
 
 /**
@@ -27,21 +31,39 @@ public class FrmCuentaBancaria extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         cargarDatos();
-        cargarTabla();
+        cargarTablaPrestamos();
         
     }
     private PersonaServicio ps = new PersonaServicio();
     private CuentaServicio cs = new CuentaServicio();
     private CuentaBancariaServicio cbs = new CuentaBancariaServicio();
     private PrestamosServicio prs = new PrestamosServicio();
-    private ModeloTablaPrestamos modelo = new ModeloTablaPrestamos();
-    
-     private void cargarTabla(){
+    private PagosServicio pgs = new PagosServicio();
+    private ModeloTablaPrestamos modelopr = new ModeloTablaPrestamos();
+    private ModeloTablaPagosAmericano modelopa = new ModeloTablaPagosAmericano();
+    private ModeloTablaPagosAleman modelopal = new ModeloTablaPagosAleman();
+    private ModeloTablaPagosFrances modelofr = new ModeloTablaPagosFrances();
+     private void cargarTablaPrestamos(){
      //ps.fijarPrestamos((Prestamos) Sesion.getCuenta().getPersona().getCuentaBancaria().getListaPrestamos());
-        modelo.setLista(prs.listarPrestamos());
-        tbl_tabla.setModel(modelo);
+        modelopr.setLista(prs.listarPrestamos());
+        tbl_tabla.setModel(modelopr);
         tbl_tabla.updateUI();
     }
+     private void cargarTablaPagos(){
+    
+    if(prs.getPrestamos().getTipo().equals("americano")){
+      modelopa.setLista(pgs.listarPagos());
+        tbl_tabla.setModel(modelopa);
+        tbl_tabla.updateUI();}
+     if(prs.getPrestamos().getTipo().equals("frances")){
+      modelofr.setLista(pgs.listarPagos());
+        tbl_tabla.setModel(modelofr);
+        tbl_tabla.updateUI();}
+     else if(prs.getPrestamos().getTipo().equals("aleman")){
+        modelopal.setLista(pgs.listarPagos());
+        tbl_tabla.setModel(modelopal);
+        tbl_tabla.updateUI();}
+     }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -95,6 +117,11 @@ public class FrmCuentaBancaria extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbl_tabla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_tablaMouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(tbl_tabla);
 
         jLabel5.setFont(new java.awt.Font("MS UI Gothic", 0, 14)); // NOI18N
@@ -201,6 +228,12 @@ public class FrmCuentaBancaria extends javax.swing.JDialog {
     new FrmPrincipal().setVisible(true);
                 dispose(); 
     }//GEN-LAST:event_btn_volverCuentaBActionPerformed
+
+    private void tbl_tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_tablaMouseClicked
+        if (evt.getClickCount() >=2) {
+        cargarTablaPagos();
+        }
+    }//GEN-LAST:event_tbl_tablaMouseClicked
     private void cargarDatos(){
     ps.fijarPersona(Sesion.getCuenta().getPersona());
     cbs.fijarCuentaBancaria(Sesion.getCuenta().getPersona().getCuentaBancaria());

@@ -23,7 +23,7 @@ public class ModeloTablaPagosAleman extends AbstractTableModel{
 
     @Override
     public int getColumnCount() {
-        return 5;
+        return 6;
     }
     @Override
     public int getRowCount() {
@@ -35,10 +35,9 @@ public class ModeloTablaPagosAleman extends AbstractTableModel{
         Pagos p = lista.get(rowIndex);
         switch(columnIndex) {
             case 0: 
-                for(int i=1;i<=p.getAnios();i++){
+                for(int i=1;i<=p.getNumeroCuotas();i++){
                 return i;
-                }  
-            
+                }   
             case 1: return p.getInteres();
             case 2: return p.getCuota();
             case 3: return p.getPago();

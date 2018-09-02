@@ -6,8 +6,11 @@
 package controlador.dao;
 
 import static controlador.Conexion.getManager;
+import controlador.utilidades.Sesion;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Query;
+import modelo.Pagos;
 import modelo.Pagos;
 
 /**
@@ -48,5 +51,17 @@ public class PagosDao extends AdaptadorDao<Pagos> {
         }
         return verificar;
     } 
+     public List<Pagos> listarPagos() {
+        List<Pagos> lista = new ArrayList<>();
+        try {
+            Query q = getManager().createQuery("SELECT p FROM Pagos p where p.prestamos.id = :id"); 
+            q.setParameter("id", getPagos().getPrestamos().getId());
+            lista = q.getResultList();
+        } catch (Exception e) {
+            System.out.println("error "+e);
+        }
+        return lista;
+    }
 }
+
 

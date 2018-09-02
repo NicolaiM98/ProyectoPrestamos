@@ -32,7 +32,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         btn_cuentaBancaria = new javax.swing.JButton();
         btn_solicitarPrestamo = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         btn_salirPrincipal = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -64,18 +63,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         getContentPane().add(btn_solicitarPrestamo);
         btn_solicitarPrestamo.setBounds(20, 70, 120, 30);
 
-        jButton1.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 102, 153));
-        jButton1.setText("Pagos");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(20, 150, 120, 30);
-
         btn_salirPrincipal.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         btn_salirPrincipal.setForeground(new java.awt.Color(0, 102, 153));
         btn_salirPrincipal.setText("Salir");
@@ -86,13 +73,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btn_salirPrincipal);
-        btn_salirPrincipal.setBounds(20, 210, 70, 30);
+        btn_salirPrincipal.setBounds(20, 170, 70, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/Tío_Rico.png"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(80, 10, 305, 365);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(20, 190, 120, 10);
+        jSeparator1.setBounds(20, 150, 120, 50);
 
         setSize(new java.awt.Dimension(411, 426));
         setLocationRelativeTo(null);
@@ -109,12 +96,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         new FrmPrestamos(this,true).setVisible(true);
         dispose();
     }//GEN-LAST:event_btn_solicitarPrestamoActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        new FrmPagos(this,true).setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btn_cuentaBancariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cuentaBancariaActionPerformed
      new FrmCuentaBancaria(this,true).setVisible(true);
@@ -169,7 +150,6 @@ JFrame.setDefaultLookAndFeelDecorated(true);
     private javax.swing.JButton btn_cuentaBancaria;
     private javax.swing.JButton btn_salirPrincipal;
     private javax.swing.JButton btn_solicitarPrestamo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables

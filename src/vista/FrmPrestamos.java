@@ -280,7 +280,7 @@ public class FrmPrestamos extends javax.swing.JDialog {
     private void guardarObjetoFrances() {
         cbs.fijarCuentaBancaria(Sesion.getCuenta().getPersona().getCuentaBancaria());
         prs.getPrestamos().setValorPrestamo(Double.parseDouble(txt_monto.getText()));
-        prs.getPrestamos().setNumeroCuotas(Integer.parseInt(txt_anios.getText()));
+        prs.getPrestamos().setNumeroCuotas(Integer.parseInt(txt_anios.getText())*12);
         prs.getPrestamos().setSaldoTotal(Double.parseDouble(txt_monto.getText()));
         prs.getPrestamos().setFechaLimite(ut.sumarAnios(new Date(), (Integer.parseInt(txt_anios.getText()))));
         pgs.getPagos().setAnios(Integer.parseInt(txt_anios.getText()));
@@ -302,12 +302,20 @@ public class FrmPrestamos extends javax.swing.JDialog {
         Date fecha = new Date();
         prs.guardar();
         for (int i = 0; i < n; i++) {
+            if( i == n-1){
             ci = ra * inte;
             tci = tci + ci;
             ca = cuota - ci;
             ta = ta + ca;
-            ra = (Double.parseDouble(txt_monto.getText())) - ta;
+            ra=0;
             fecha = ut.sumarMeses(fecha);
+            }
+            else{ci = ra * inte;
+            tci = tci + ci;
+            ca = cuota - ci;
+            ta = ta + ca;
+            ra = (Double.parseDouble(txt_monto.getText())) - ta;
+            fecha = ut.sumarMeses(fecha);}
             cbs.fijarCuentaBancaria(Sesion.getCuenta().getPersona().getCuentaBancaria());
             pgs.getPagos().setId((long) (Math.random()));
             pgs.getPagos().setNumeroCuotas(i + 1);
@@ -334,7 +342,7 @@ public class FrmPrestamos extends javax.swing.JDialog {
     private void guardarObjetoAleman() {
         cbs.fijarCuentaBancaria(Sesion.getCuenta().getPersona().getCuentaBancaria());
         prs.getPrestamos().setValorPrestamo(Double.parseDouble(txt_monto.getText()));
-        prs.getPrestamos().setNumeroCuotas(Integer.parseInt(txt_anios.getText()));
+        prs.getPrestamos().setNumeroCuotas(Integer.parseInt(txt_anios.getText())*12);
         prs.getPrestamos().setSaldoTotal(Double.parseDouble(txt_monto.getText()));
         prs.getPrestamos().setFechaLimite(ut.sumarAnios(new Date(), (Integer.parseInt(txt_anios.getText()))));
         pgs.getPagos().setAnios(Integer.parseInt(txt_anios.getText()));
@@ -351,6 +359,9 @@ public class FrmPrestamos extends javax.swing.JDialog {
         Date fecha = new Date();
         prs.guardar();
         for (int i = 0; i < n; i++) {
+            if(i==n-1){
+            ra=0;
+            }
             in = ra * 0.05;
             tci = tci + in;
             cuota = in + amortizacion;
@@ -396,8 +407,8 @@ public class FrmPrestamos extends javax.swing.JDialog {
         double tci=0;
         Date fecha = new Date();
         prs.guardar();
-        for(int i =0 ; i< n ;i++){ 
-            if(i==n-1){
+        for(int i =0 ; i<= n ;i++){ 
+            if(i== n){
             cuota=Double.parseDouble(txt_monto.getText())+in;
             amortizacion= Double.parseDouble(txt_monto.getText());
             ra=0;
@@ -405,7 +416,7 @@ public class FrmPrestamos extends javax.swing.JDialog {
             tci= tci + in;
             amortizacion=0;
             }
-            fecha = ut.sumarMeses(fecha);
+            fecha = ut.sumarAnios(fecha , 1);
             cbs.fijarCuentaBancaria(Sesion.getCuenta().getPersona().getCuentaBancaria());
             pgs.getPagos().setId((long) (Math.random()));
             pgs.getPagos().setNumeroCuotas(i + 1);
@@ -456,11 +467,11 @@ public class FrmPrestamos extends javax.swing.JDialog {
 
     private void btn_solicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_solicitarActionPerformed
 
-        if (cbx_tipo.getSelectedItem().toString().toLowerCase().equals("americano")) {
+        if (cbx_tipo.getSelectedIndex()==0) {
             guardarObjetoAmericano();
-        } else if (cbx_tipo.getSelectedItem().toString().toLowerCase().equals("frances")) {
+        }if (cbx_tipo.getSelectedItem().toString().toLowerCase().equals("frances")) {
             guardarObjetoFrances();
-        } else {
+        } else if(cbx_tipo.getSelectedItem().toString().toLowerCase().equals("aleman")){
             guardarObjetoAleman();
         }
     }//GEN-LAST:event_btn_solicitarActionPerformed
@@ -485,11 +496,11 @@ public class FrmPrestamos extends javax.swing.JDialog {
     }//GEN-LAST:event_txt_aniosKeyTyped
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (cbx_tipo.getSelectedItem().toString().toLowerCase().equals("americano")) {
+        if (cbx_tipo.getSelectedIndex()==0) {
             txt_calcular.setText(op.CalcularAmericano(Double.parseDouble(txt_monto.getText()), Integer.parseInt(txt_anios.getText())));
-        } else if (cbx_tipo.getSelectedItem().toString().toLowerCase().equals("frances")) {
+        } if (cbx_tipo.getSelectedItem().toString().toLowerCase().equals("frances")) {
             txt_calcular.setText(op.CalcularFrances(Double.parseDouble(txt_monto.getText()), Integer.parseInt(txt_anios.getText())));
-        } else {
+        } else if(cbx_tipo.getSelectedItem().toString().toLowerCase().equals("aleman")){
             txt_calcular.setText(op.CalcularAleman(Double.parseDouble(txt_monto.getText()), Integer.parseInt(txt_anios.getText())));
         }
     }//GEN-LAST:event_jButton1ActionPerformed

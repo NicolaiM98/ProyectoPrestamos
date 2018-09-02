@@ -23,7 +23,7 @@ public class ModeloTablaPagosAmericano extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 5;
+        return 6;
     }
     @Override
     public int getRowCount() {
@@ -41,7 +41,8 @@ public class ModeloTablaPagosAmericano extends AbstractTableModel {
             case 1: return p.getEstado();
             case 2: return p.getInteres();
             case 3: return p.getCuota();
-            case 4: return p.getSaldo();
+            case 4: return p.getAmortizacion();
+            case 5: return p.getSaldo();
             default: return null; 
         }
     }
@@ -53,7 +54,8 @@ public class ModeloTablaPagosAmericano extends AbstractTableModel {
             case 1: return "Estado del pago";
             case 2: return "Interes";
             case 3: return "Cuota";
-            case 4: return "Saldo Pendiente";
+            case 4: return "Amortizacion";
+            case 5: return "Saldo Pendiente";
             default: return null; 
         }
     }
