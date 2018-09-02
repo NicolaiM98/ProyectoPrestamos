@@ -18,6 +18,8 @@ import javax.swing.UIManager;
 import vista.FrmPrincipal;
 import vista.utilidades.UtilidadesComponente;
 import controlador.servicios.RolServicio;
+import java.awt.Color;
+import javax.swing.JButton;
 import modelo.Rol;
 /**
  *
@@ -37,6 +39,7 @@ public class FrmLogin extends javax.swing.JDialog {
         initComponents();
     }
 
+
     /**
      * Thps method ps called from within the constructor to initialize the form.
      * WARNING: Do NOT modify thps code. The content of thps method ps always
@@ -46,16 +49,7 @@ public class FrmLogin extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        txt_usuario = new javax.swing.JTextField();
-        txt_pass = new javax.swing.JPasswordField();
-        btn_login = new javax.swing.JButton();
-        tbn_cancel = new javax.swing.JButton();
-        jSeparator2 = new javax.swing.JSeparator();
-        jPanel2 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txt_regApell = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -73,85 +67,32 @@ public class FrmLogin extends javax.swing.JDialog {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel11 = new javax.swing.JLabel();
         txt_regClave = new javax.swing.JPasswordField();
-        jLabel10 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
+        txt_usuario = new javax.swing.JTextField();
+        txt_pass = new javax.swing.JPasswordField();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
+        jButton1 = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jSeparator6 = new javax.swing.JSeparator();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+
+        jLabel12.setText("jLabel12");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(153, 255, 153));
         getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("MS UI Gothic", 3, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 51, 153));
-        jLabel1.setText("INICIO DE SESION");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(90, 30, 170, 35);
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.setForeground(new java.awt.Color(153, 0, 0));
-        jPanel1.setLayout(null);
-
-        jLabel2.setFont(new java.awt.Font("MS UI Gothic", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel2.setText("USUARIO");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(27, 27, 80, 20);
-
-        jLabel3.setFont(new java.awt.Font("MS UI Gothic", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel3.setText("CONTRASEÑA");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(30, 80, 90, 14);
-
-        txt_usuario.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
-        txt_usuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 153)));
-        jPanel1.add(txt_usuario);
-        txt_usuario.setBounds(170, 30, 115, 15);
-
-        txt_pass.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
-        txt_pass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 153)));
-        txt_pass.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txt_passKeyPressed(evt);
-            }
-        });
-        jPanel1.add(txt_pass);
-        txt_pass.setBounds(170, 80, 115, 15);
-
-        btn_login.setFont(new java.awt.Font("MS UI Gothic", 0, 14)); // NOI18N
-        btn_login.setForeground(new java.awt.Color(0, 102, 204));
-        btn_login.setText("Aceptar");
-        btn_login.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btn_login.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_loginActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btn_login);
-        btn_login.setBounds(45, 151, 60, 30);
-
-        tbn_cancel.setFont(new java.awt.Font("MS UI Gothic", 0, 14)); // NOI18N
-        tbn_cancel.setForeground(new java.awt.Color(0, 102, 153));
-        tbn_cancel.setText("Cancelar");
-        tbn_cancel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        tbn_cancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tbn_cancelActionPerformed(evt);
-            }
-        });
-        jPanel1.add(tbn_cancel);
-        tbn_cancel.setBounds(190, 150, 70, 30);
-        jPanel1.add(jSeparator2);
-        jSeparator2.setBounds(30, 132, 260, 10);
-
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(10, 90, 330, 210);
-
-        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel4.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel4.setFont(new java.awt.Font("MS UI Gothic", 0, 14)); // NOI18N
         jLabel4.setText("Nombres");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(400, 180, 70, 14);
 
         txt_regApell.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         txt_regApell.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 153)));
@@ -173,18 +114,23 @@ public class FrmLogin extends javax.swing.JDialog {
                 txt_regApellKeyTyped(evt);
             }
         });
+        getContentPane().add(txt_regApell);
+        txt_regApell.setBounds(530, 220, 150, 20);
 
-        jLabel5.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel5.setFont(new java.awt.Font("MS UI Gothic", 0, 14)); // NOI18N
         jLabel5.setText("Apellidos");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(400, 220, 70, 14);
 
-        jLabel6.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel6.setFont(new java.awt.Font("MS UI Gothic", 0, 14)); // NOI18N
         jLabel6.setText("Email");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(400, 260, 50, 14);
 
-        jLabel7.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel7.setFont(new java.awt.Font("MS UI Gothic", 0, 14)); // NOI18N
         jLabel7.setText("N° de cédula");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(400, 300, 83, 14);
 
         txt_regNom.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         txt_regNom.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 153)));
@@ -206,6 +152,8 @@ public class FrmLogin extends javax.swing.JDialog {
                 txt_regNomKeyTyped(evt);
             }
         });
+        getContentPane().add(txt_regNom);
+        txt_regNom.setBounds(530, 180, 150, 20);
 
         txt_regEmail.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         txt_regEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 153)));
@@ -222,6 +170,8 @@ public class FrmLogin extends javax.swing.JDialog {
                 txt_regEmailActionPerformed(evt);
             }
         });
+        getContentPane().add(txt_regEmail);
+        txt_regEmail.setBounds(530, 260, 150, 20);
 
         txt_regCed.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         txt_regCed.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 153)));
@@ -238,10 +188,13 @@ public class FrmLogin extends javax.swing.JDialog {
                 txt_regCedKeyTyped(evt);
             }
         });
+        getContentPane().add(txt_regCed);
+        txt_regCed.setBounds(530, 300, 150, 20);
 
-        jLabel8.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel8.setFont(new java.awt.Font("MS UI Gothic", 0, 14)); // NOI18N
         jLabel8.setText("Telefono");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(400, 340, 60, 14);
 
         txt_regTelef.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         txt_regTelef.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 153)));
@@ -263,10 +216,13 @@ public class FrmLogin extends javax.swing.JDialog {
                 txt_regTelefKeyTyped(evt);
             }
         });
+        getContentPane().add(txt_regTelef);
+        txt_regTelef.setBounds(530, 340, 150, 20);
 
-        jLabel9.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel9.setFont(new java.awt.Font("MS UI Gothic", 0, 14)); // NOI18N
         jLabel9.setText("Nombre de Usuario");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(400, 100, 120, 14);
 
         txt_regUsuario.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         txt_regUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 153)));
@@ -283,30 +239,40 @@ public class FrmLogin extends javax.swing.JDialog {
                 txt_regUsuarioActionPerformed(evt);
             }
         });
+        getContentPane().add(txt_regUsuario);
+        txt_regUsuario.setBounds(530, 100, 150, 20);
 
-        btn_registrar.setFont(new java.awt.Font("MS UI Gothic", 0, 14)); // NOI18N
-        btn_registrar.setForeground(new java.awt.Color(0, 102, 153));
-        btn_registrar.setText("Crear");
-        btn_registrar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_registrar.setFont(new java.awt.Font("MS UI Gothic", 1, 14)); // NOI18N
+        btn_registrar.setText("Registrar");
+        btn_registrar.setBorder(null);
+        btn_registrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_registrarActionPerformed(evt);
             }
         });
+        getContentPane().add(btn_registrar);
+        btn_registrar.setBounds(420, 380, 100, 30);
 
-        btn_limpiar.setFont(new java.awt.Font("MS UI Gothic", 0, 14)); // NOI18N
-        btn_limpiar.setForeground(new java.awt.Color(0, 102, 153));
-        btn_limpiar.setText("Limpiar");
-        btn_limpiar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_limpiar.setBackground(new java.awt.Color(204, 204, 255));
+        btn_limpiar.setFont(new java.awt.Font("MS UI Gothic", 1, 14)); // NOI18N
+        btn_limpiar.setText("Cancelar");
+        btn_limpiar.setBorder(null);
+        btn_limpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_limpiarActionPerformed(evt);
             }
         });
+        getContentPane().add(btn_limpiar);
+        btn_limpiar.setBounds(580, 380, 100, 30);
+        getContentPane().add(jSeparator1);
+        jSeparator1.setBounds(0, 0, 0, 2);
 
-        jLabel11.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 102, 153));
+        jLabel11.setFont(new java.awt.Font("MS UI Gothic", 0, 14)); // NOI18N
         jLabel11.setText("Contraseña");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(400, 140, 70, 14);
 
         txt_regClave.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 153)));
         txt_regClave.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -322,98 +288,81 @@ public class FrmLogin extends javax.swing.JDialog {
                 txt_regClaveActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(btn_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addGap(42, 42, 42)
-                        .addComponent(txt_regUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))
-                    .addComponent(jSeparator1)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel5))
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11))
-                        .addGap(40, 40, 40)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_regNom)
-                            .addComponent(txt_regCed, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txt_regEmail, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txt_regApell)
-                            .addComponent(txt_regTelef)
-                            .addComponent(txt_regClave))))
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_regUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txt_regClave, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_regNom, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_regApell, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_regEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_regCed, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_regTelef, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_registrar)
-                    .addComponent(btn_limpiar))
-                .addGap(19, 19, 19))
-        );
-
-        getContentPane().add(jPanel2);
-        jPanel2.setBounds(370, 90, 340, 350);
-
-        jLabel10.setFont(new java.awt.Font("MS UI Gothic", 3, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 51, 153));
-        jLabel10.setText("CREAR UNA CUENTA");
-        getContentPane().add(jLabel10);
-        jLabel10.setBounds(460, 30, 190, 35);
+        getContentPane().add(txt_regClave);
+        txt_regClave.setBounds(530, 140, 150, 20);
         getContentPane().add(jSeparator3);
-        jSeparator3.setBounds(20, 62, 310, 10);
+        jSeparator3.setBounds(40, 50, 90, 10);
         getContentPane().add(jSeparator4);
-        jSeparator4.setBounds(380, 60, 320, 10);
+        jSeparator4.setBounds(390, 50, 70, 10);
 
-        setSize(new java.awt.Dimension(737, 488));
+        txt_usuario.setFont(new java.awt.Font("MS UI Gothic", 0, 14)); // NOI18N
+        txt_usuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 153)));
+        getContentPane().add(txt_usuario);
+        txt_usuario.setBounds(90, 100, 200, 30);
+
+        txt_pass.setFont(new java.awt.Font("MS UI Gothic", 0, 14)); // NOI18N
+        txt_pass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 153)));
+        txt_pass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_passKeyPressed(evt);
+            }
+        });
+        getContentPane().add(txt_pass);
+        txt_pass.setBounds(90, 170, 200, 30);
+        getContentPane().add(jSeparator2);
+        jSeparator2.setBounds(60, 250, 260, 10);
+        getContentPane().add(jSeparator5);
+        jSeparator5.setBounds(240, 50, 90, 10);
+
+        jButton1.setBackground(new java.awt.Color(204, 204, 255));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton1.setText("LOGIN");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(140, 270, 100, 30);
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel13.setText("SIGN IN");
+        getContentPane().add(jLabel13);
+        jLabel13.setBounds(140, 40, 90, 29);
+
+        jLabel3.setText("Ingrese su contraseña");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(90, 210, 120, 14);
+
+        jLabel2.setText("Ingrese su usuario");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(90, 130, 100, 14);
+        getContentPane().add(jSeparator6);
+        jSeparator6.setBounds(630, 50, 70, 10);
+
+        jToggleButton1.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jToggleButton1.setForeground(new java.awt.Color(255, 0, 0));
+        jToggleButton1.setText("X");
+        jToggleButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jToggleButton1);
+        jToggleButton1.setBounds(680, 0, 40, 20);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setText("REGISTER IN");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(470, 40, 150, 29);
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/asd.jpg"))); // NOI18N
+        jLabel14.setText("jLabel14");
+        getContentPane().add(jLabel14);
+        jLabel14.setBounds(0, 0, 720, 440);
+
+        setSize(new java.awt.Dimension(738, 480));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -428,11 +377,6 @@ public class FrmLogin extends javax.swing.JDialog {
     private void txt_regNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_regNomActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_regNomActionPerformed
-
-    private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
-        inicioSesion();
-
-    }//GEN-LAST:event_btn_loginActionPerformed
     private void cargarObjeto() {
         ps.getPersona().setApellido(txt_regApell.getText());
         ps.getPersona().setNombre(txt_regNom.getText());
@@ -632,10 +576,14 @@ public class FrmLogin extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_txt_passKeyPressed
 
-    private void tbn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbn_cancelActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        inicioSesion();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
         System.exit(0);
-    }//GEN-LAST:event_tbn_cancelActionPerformed
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -648,7 +596,7 @@ public class FrmLogin extends javax.swing.JDialog {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -689,11 +637,13 @@ public class FrmLogin extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_limpiar;
-    private javax.swing.JButton btn_login;
     private javax.swing.JButton btn_registrar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -702,13 +652,13 @@ public class FrmLogin extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JButton tbn_cancel;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JPasswordField txt_pass;
     private javax.swing.JTextField txt_regApell;
     private javax.swing.JTextField txt_regCed;
