@@ -11,27 +11,38 @@ import javax.persistence.Query;
 import modelo.Persona;
 
 /**
- *
- * @author Fabricio
+ *Clase en donde creamos los metodos necesarios para utilizar los datos de una persona
+ * @author Fabricio Carrion y Nicolai Mogrovejo
+ * 
  */
 public class PersonaDao extends AdaptadorDao<Persona>{
     private Persona persona;
 
+    //Constructor de la clase PersonaDao
     public PersonaDao() {
         super(Persona.class);
     }
-
+     /**
+     *Metodo que permite obtener los datos de la persona
+     * @return persona  datos de la persona
+    */  
     public Persona getPersona() {
         if (persona == null) {
             persona = new Persona();
         }
         return persona;
     }
-
+     /**
+     *Metodo que permite modificar los datos de la persona
+     * @param persona para definir de que persona se va a modificar
+    */  
     public void setPersona(Persona persona) {
         this.persona = persona;
     }
-
+     /**
+     *Metodo que permite guardar los datos de una persona
+     * @return verificar si se guardo o no
+    */  
     public boolean guardar() {
         boolean verificar = false;
         try {
@@ -50,63 +61,11 @@ public class PersonaDao extends AdaptadorDao<Persona>{
         return verificar;
     }
 
-    public List<Persona> listarSinAdministrador() {
-        List<Persona> lista = new ArrayList<>();
-        try {
-            Query q = getManager().createQuery("SELECT p FROM Persona p WHERE p.rol.nombre != :nombre"); //:parametro
-            q.setParameter("nombre", "Administrador");
-            lista = q.getResultList();
-        } catch (Exception e) {
-            System.out.println("No se puede listar sin Administrador " + e);
-        }
-        return lista;
-    }
-
-    public List<Persona> listarSinAdministradorTipo(String tipo) {
-        List<Persona> lista = new ArrayList<>();
-        try {
-            Query q = getManager()
-                    .createQuery("SELECT p FROM Persona p WHERE p.rol.nombre != :nombre and p.rol.nombre = :tipo"); //:parametro
-            q.setParameter("nombre", "Administrador");
-            q.setParameter("tipo", tipo);
-            lista = q.getResultList();
-        } catch (Exception e) {
-            System.out.println("No se puede listar sin Administrador " + e);
-        }
-        return lista;
-    }
-
-    public List<Persona> listarSinAdministradorLike(String texto) {
-        //Like.- permite buscar por coincidencias, propiamente de MySQL
-        List<Persona> lista = new ArrayList<>();
-        try {
-            Query q = getManager().createQuery("SELECT p FROM Persona p WHERE p.rol.nombre != :nombre AND (LOWER(p.apellidos) LIKE CONCAT('%', :texto, '%'))");
-            //lower.- convierte a minusculas
-            q.setParameter("nombre", "Administrador");
-            q.setParameter("texto", texto);
-            lista = q.getResultList();
-        } catch (Exception e) {
-            System.out.println("No se puede listar sin Administrador " + e);
-        }
-        return lista;
-    }
-
-    public List<Persona> listarSinAdministradorTipoLike(String tipo, String texto) {
-        List<Persona> lista = new ArrayList<>();
-        try {
-            Query q = getManager()
-                    .createQuery("SELECT p FROM Persona p WHERE p.rol.nombre != :nombre and p.rol.nombre = :tipo "
-                            + "AND (LOWER(p.apellidos) LIKE CONCAT('%', :texto, '%'))");
-            q.setParameter("nombre", "Administrador");
-            q.setParameter("tipo", tipo);
-            q.setParameter("texto", texto);
-            lista = q.getResultList();
-        } catch (Exception e) {
-            System.out.println("No se puede listar sin Administrador " + e);
-        }
-        return lista;
-    }
-
+     /**
+     *Metodo que permite obtener la cedula de una persona   
+     * @param cedula para definir la cedula que queremos obtener
+     * @return p retorna la cedula de la persona, en caso contrario nos retornara un null si no existen personas en el registro
+    */  
     public Persona getPersonaCedula(String cedula) {
         Persona p = null;
         try {

@@ -36,24 +36,5 @@ public class PersonaServicio {
         obj.setPersona(persona);
     }
 
-    public List<Persona> listarSinAdministrador() {
-        return obj.listarSinAdministrador();
-    }
-
-    public Persona getPersonaCedula(String cedula) {
-        return obj.getPersonaCedula(cedula);
-    }
-
-    public List<Persona> listarSinAdministradorTipo(String tipo) {
-        return obj.listarSinAdministradorTipo(tipo);
-    }
-
-    public List<Persona> listarSinAdministradorLike(String texto) {
-        return obj.listarSinAdministradorLike(texto);
-    }
-
-    public List<Persona> listarSinAdministradorTipoLike(String tipo, String texto) {
-        return obj.listarSinAdministradorTipoLike(tipo, texto);
-    }
 
 }
