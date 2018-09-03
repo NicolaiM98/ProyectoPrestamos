@@ -34,10 +34,7 @@ public class ModeloTablaPagosAleman extends AbstractTableModel{
     public Object getValueAt(int rowIndex, int columnIndex) {
         Pagos p = lista.get(rowIndex);
         switch(columnIndex) {
-            case 0: 
-                for(int i=1;i<=p.getNumeroCuotas();i++){
-                return i;
-                }   
+            case 0: return p.getNumeroCuotas();
             case 1: return p.getInteres();
             case 2: return p.getCuota();
             case 4: return p.getAmortizacion();

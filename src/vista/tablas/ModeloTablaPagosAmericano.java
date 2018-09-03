@@ -34,10 +34,7 @@ public class ModeloTablaPagosAmericano extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         Pagos p = lista.get(rowIndex);
         switch(columnIndex) {
-            case 0: 
-                for(int i=1;i<=p.getAnios();i++){
-                return i;
-                }  
+            case 0: return p.getNumeroCuotas();   
             case 1: if(p.getEstado()== true){
             return "No Pagado";
             }

@@ -76,7 +76,7 @@ public class FrmPrestamos extends javax.swing.JDialog {
         jLabel1.setText("Solicitar Prestamo Bancario");
 
         cbx_tipo.setFont(new java.awt.Font("MS UI Gothic", 0, 11)); // NOI18N
-        cbx_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Americano\t", "Aleman", "Frances" }));
+        cbx_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Americano", "Aleman", "Frances" }));
         cbx_tipo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 153)));
         cbx_tipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,7 +116,6 @@ public class FrmPrestamos extends javax.swing.JDialog {
         btn_solicitar.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         btn_solicitar.setForeground(new java.awt.Color(0, 102, 153));
         btn_solicitar.setText("Solicitar");
-        btn_solicitar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_solicitar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_solicitarActionPerformed(evt);
@@ -126,7 +125,6 @@ public class FrmPrestamos extends javax.swing.JDialog {
         jButton2.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         jButton2.setForeground(new java.awt.Color(0, 102, 153));
         jButton2.setText("Cancelar");
-        jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);

@@ -56,7 +56,7 @@ public class FrmCuentaBancaria extends javax.swing.JDialog {
     }
      private void cargarTablaPagos( String dato , String tipo){ 
          
-      if(tipo.toLowerCase().equals("americano")){
+      if(tipo.trim().toLowerCase().equals("americano")){
         modelopa.setLista(pgs.listarPagos(dato));
         tbl_tabla.setModel(modelopa);
         tbl_tabla.updateUI();}
@@ -257,8 +257,8 @@ public class FrmCuentaBancaria extends javax.swing.JDialog {
         }
         else if(evt.getClickCount() >=2 && bandera==false)   
         {  
-            if(tipo.toString().toLowerCase().equals("americano")){
-         Object datoIdPagoamr = modelopa.getValueAt(tbl_tabla.getSelectedRow(), 6);
+            if(tipo.toString().trim().toLowerCase().equals("americano")){
+            Object datoIdPagoamr = modelopa.getValueAt(tbl_tabla.getSelectedRow(), 6);
             pgs.realizarPago(datoIdPagoamr.toString());
                 UtilidadesComponente.mensajeOk("Pago Realizado", "Su pago se ah realizado correctamente");
             }
@@ -278,6 +278,9 @@ public class FrmCuentaBancaria extends javax.swing.JDialog {
     private void btn_prestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_prestamosActionPerformed
       bandera= true;
       btn_prestamos.setVisible(false);
+      Object dato = modelopr.getValueAt(tbl_tabla.getSelectedRow(), 5);
+      tipo = modelopr.getValueAt(tbl_tabla.getSelectedRow(), 4);
+      cargarTablaPagos(dato.toString(), tipo.toString());
     }//GEN-LAST:event_btn_prestamosActionPerformed
     private void cargarDatos(){
     ps.fijarPersona(Sesion.getCuenta().getPersona());
