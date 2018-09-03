@@ -92,7 +92,7 @@ public class FrmLogin extends javax.swing.JDialog {
         jLabel4.setFont(new java.awt.Font("MS UI Gothic", 0, 14)); // NOI18N
         jLabel4.setText("Nombres");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(400, 180, 70, 14);
+        jLabel4.setBounds(400, 180, 100, 14);
 
         txt_regApell.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         txt_regApell.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 153)));
@@ -120,17 +120,17 @@ public class FrmLogin extends javax.swing.JDialog {
         jLabel5.setFont(new java.awt.Font("MS UI Gothic", 0, 14)); // NOI18N
         jLabel5.setText("Apellidos");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(400, 220, 70, 14);
+        jLabel5.setBounds(400, 220, 90, 14);
 
         jLabel6.setFont(new java.awt.Font("MS UI Gothic", 0, 14)); // NOI18N
         jLabel6.setText("Email");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(400, 260, 50, 14);
+        jLabel6.setBounds(400, 260, 80, 14);
 
         jLabel7.setFont(new java.awt.Font("MS UI Gothic", 0, 14)); // NOI18N
         jLabel7.setText("N° de cédula");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(400, 300, 83, 14);
+        jLabel7.setBounds(400, 300, 110, 14);
 
         txt_regNom.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         txt_regNom.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 153)));
@@ -194,7 +194,7 @@ public class FrmLogin extends javax.swing.JDialog {
         jLabel8.setFont(new java.awt.Font("MS UI Gothic", 0, 14)); // NOI18N
         jLabel8.setText("Telefono");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(400, 340, 60, 14);
+        jLabel8.setBounds(400, 340, 90, 14);
 
         txt_regTelef.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         txt_regTelef.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 153)));
@@ -222,7 +222,7 @@ public class FrmLogin extends javax.swing.JDialog {
         jLabel9.setFont(new java.awt.Font("MS UI Gothic", 0, 14)); // NOI18N
         jLabel9.setText("Nombre de Usuario");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(400, 100, 120, 14);
+        jLabel9.setBounds(400, 100, 130, 14);
 
         txt_regUsuario.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
         txt_regUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 153)));
@@ -272,7 +272,7 @@ public class FrmLogin extends javax.swing.JDialog {
         jLabel11.setFont(new java.awt.Font("MS UI Gothic", 0, 14)); // NOI18N
         jLabel11.setText("Contraseña");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(400, 140, 70, 14);
+        jLabel11.setBounds(400, 140, 90, 14);
 
         txt_regClave.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 153)));
         txt_regClave.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -332,11 +332,11 @@ public class FrmLogin extends javax.swing.JDialog {
 
         jLabel3.setText("Ingrese su contraseña");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(90, 210, 120, 14);
+        jLabel3.setBounds(90, 210, 200, 14);
 
         jLabel2.setText("Ingrese su usuario");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(90, 130, 100, 14);
+        jLabel2.setBounds(90, 130, 200, 14);
         getContentPane().add(jSeparator6);
         jSeparator6.setBounds(630, 50, 70, 10);
 
@@ -430,6 +430,9 @@ public class FrmLogin extends javax.swing.JDialog {
         txt_regTelef.setText(null);
         txt_regUsuario.setText(null);
         txt_regClave.setText(null);
+        txt_usuario.setText("Usuario");
+        txt_pass.setText("Contraseña");
+        
     }
 
     private void inicioSesion() {

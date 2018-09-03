@@ -5,6 +5,8 @@
  */
 package vista;
 
+import controlador.servicios.PersonaServicio;
+import controlador.utilidades.Sesion;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
@@ -13,12 +15,20 @@ import javax.swing.UIManager;
  * @author Fabricio
  */
 public class FrmPrincipal extends javax.swing.JFrame {
-
+private PersonaServicio ps = new PersonaServicio();
     /**
      * Creates new form FrmPrincipal
      */
     public FrmPrincipal() {
         initComponents();
+        cargarDatos();
+    }
+    private void cargarDatos(){
+    ps.fijarPersona(Sesion.getCuenta().getPersona());
+    
+    
+    jl_usuario.setText(ps.getPersona().toString());
+    
     }
 
     /**
@@ -30,77 +40,108 @@ public class FrmPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btn_cuentaBancaria = new javax.swing.JButton();
-        btn_solicitarPrestamo = new javax.swing.JButton();
-        btn_salirPrincipal = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
+        btn_cuenta = new javax.swing.JToggleButton();
+        btn_prestamo = new javax.swing.JToggleButton();
+        btn_cerrar = new javax.swing.JToggleButton();
+        jLabel2 = new javax.swing.JLabel();
+        jl_usuario = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jToggleButton1 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        btn_cuentaBancaria.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
-        btn_cuentaBancaria.setForeground(new java.awt.Color(0, 102, 153));
-        btn_cuentaBancaria.setText("Cuenta Bancaria");
-        btn_cuentaBancaria.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btn_cuentaBancaria.addActionListener(new java.awt.event.ActionListener() {
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(null);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/user.jpg"))); // NOI18N
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(0, 0, 130, 129);
+
+        btn_cuenta.setText("Su Cuenta");
+        btn_cuenta.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btn_cuenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_cuentaBancariaActionPerformed(evt);
+                btn_cuentaActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_cuentaBancaria);
-        btn_cuentaBancaria.setBounds(20, 110, 120, 30);
+        jPanel1.add(btn_cuenta);
+        btn_cuenta.setBounds(20, 200, 100, 30);
 
-        btn_solicitarPrestamo.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
-        btn_solicitarPrestamo.setForeground(new java.awt.Color(0, 102, 153));
-        btn_solicitarPrestamo.setText("Solicitar Prestamo");
-        btn_solicitarPrestamo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btn_solicitarPrestamo.addActionListener(new java.awt.event.ActionListener() {
+        btn_prestamo.setText("Solicitar un Prestamo");
+        btn_prestamo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btn_prestamo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_solicitarPrestamoActionPerformed(evt);
+                btn_prestamoActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_solicitarPrestamo);
-        btn_solicitarPrestamo.setBounds(20, 70, 120, 30);
+        jPanel1.add(btn_prestamo);
+        btn_prestamo.setBounds(20, 240, 140, 30);
 
-        btn_salirPrincipal.setFont(new java.awt.Font("MS UI Gothic", 0, 12)); // NOI18N
-        btn_salirPrincipal.setForeground(new java.awt.Color(0, 102, 153));
-        btn_salirPrincipal.setText("Salir");
-        btn_salirPrincipal.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btn_salirPrincipal.addActionListener(new java.awt.event.ActionListener() {
+        btn_cerrar.setBackground(new java.awt.Color(255, 255, 255));
+        btn_cerrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btn_cerrar.setText("Cerrar Sesion");
+        btn_cerrar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btn_cerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_salirPrincipalActionPerformed(evt);
+                btn_cerrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_salirPrincipal);
-        btn_salirPrincipal.setBounds(20, 170, 70, 30);
+        jPanel1.add(btn_cerrar);
+        btn_cerrar.setBounds(20, 140, 90, 20);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/Tío_Rico.png"))); // NOI18N
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(80, 10, 305, 365);
-        getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(20, 150, 120, 50);
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setText("BIENVENID@");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(150, 30, 110, 22);
 
-        setSize(new java.awt.Dimension(411, 426));
+        jl_usuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jPanel1.add(jl_usuario);
+        jl_usuario.setBounds(150, 60, 140, 30);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/images-1-2.jpg"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(230, 90, 230, 200);
+
+        jToggleButton1.setText("Registro de Prestamos");
+        jToggleButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jToggleButton1);
+        jToggleButton1.setBounds(20, 280, 140, 30);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 560, 330);
+
+        setSize(new java.awt.Dimension(576, 370));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_salirPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirPrincipalActionPerformed
-        // TODO add your handling code here:
-        new FrmLogin(this,true).setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btn_salirPrincipalActionPerformed
-
-    private void btn_solicitarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_solicitarPrestamoActionPerformed
-        // TODO add your handling code here:
+    private void btn_prestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_prestamoActionPerformed
         new FrmPrestamos(this,true).setVisible(true);
         dispose();
-    }//GEN-LAST:event_btn_solicitarPrestamoActionPerformed
+    }//GEN-LAST:event_btn_prestamoActionPerformed
 
-    private void btn_cuentaBancariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cuentaBancariaActionPerformed
-     new FrmCuentaBancaria(this,true).setVisible(true);
-     dispose();
-    }//GEN-LAST:event_btn_cuentaBancariaActionPerformed
+    private void btn_cerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cerrarActionPerformed
+        new FrmLogin(this,true).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btn_cerrarActionPerformed
+
+    private void btn_cuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cuentaActionPerformed
+        new FrmDatosCuenta(this,true).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btn_cuentaActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        new FrmRegistroPrestamos(this,true).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,10 +188,14 @@ JFrame.setDefaultLookAndFeelDecorated(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_cuentaBancaria;
-    private javax.swing.JButton btn_salirPrincipal;
-    private javax.swing.JButton btn_solicitarPrestamo;
+    private javax.swing.JToggleButton btn_cerrar;
+    private javax.swing.JToggleButton btn_cuenta;
+    private javax.swing.JToggleButton btn_prestamo;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JLabel jl_usuario;
     // End of variables declaration//GEN-END:variables
 }
