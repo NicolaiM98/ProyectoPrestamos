@@ -10,27 +10,36 @@ import javax.persistence.Query;
 import modelo.CuentaBancaria;
 
 /**
- *
+ * Clase en la que se crean los metodos necesarios para manejar los datos de una Cuenta Bancaria
  * @author Fabricio
  */
 public class CuentaBancariaDao extends AdaptadorDao<CuentaBancaria>{
     private CuentaBancaria cuentaBancaria;
-
+    // constructor de la clase
     public CuentaBancariaDao() {
         super(CuentaBancaria.class);
     }
-
+    /**
+     *Metodo que permite obtener los datos de la Cuenta Bancaria
+     * @return cuentaBancaria  datos de la cuenta Bancaria
+    */  
     public CuentaBancaria getCuentaBancaria() {
         if (cuentaBancaria == null) {
             cuentaBancaria = new CuentaBancaria();
         }
         return cuentaBancaria;
     }
-
+     /**
+     *Metodo que permite modificar los datos de la Cuenta Bancaria
+     * @param cuentaBancaria para definir de que Cuenta Bancaria se va a modificar
+    */  
     public void setCuentaBancaria(CuentaBancaria cuentaBancaria) {
         this.cuentaBancaria = cuentaBancaria;
     }
-
+    /**
+     *Metodo que permite guardar los datos de una Cuenta Bancaria
+     * @return verificar si se guardo o no
+    */  
     public boolean guardar() {
         boolean verificar = false;
         try {

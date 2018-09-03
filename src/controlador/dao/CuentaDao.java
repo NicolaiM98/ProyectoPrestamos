@@ -9,27 +9,36 @@ import javax.persistence.Query;
 import modelo.Cuenta;
 
 /**
- *
+ *Clase que permite manejar los datos de la cuenta que creea el usuario o adminsitrador
  * @author Fabricio
  */
 public class CuentaDao extends AdaptadorDao<Cuenta>{
     private Cuenta cuenta;
-
+    // constructor de la clase
     public CuentaDao() {
         super(Cuenta.class);
     }
-
+     /**
+     *Metodo que permite obtener los datos de cuenta
+     * @return cuenta datos de la cuenta
+    */  
     public Cuenta getCuenta() {
         if (cuenta == null) {
             cuenta = new Cuenta();
         }
         return cuenta;
     }
-
+    /**
+     *Metodo que permite modificar los datos de cuenta
+     * @param cuenta para definir de que cuenta se va a modificar
+    */   
     public void setCuenta(Cuenta cuenta) {
         this.cuenta = cuenta;
     }
-
+    /**
+     *Metodo que permite guardar los datos de una cuenta
+     * @return verificar si se guardo o no
+    */      
     public boolean guardar() {
         boolean verificar = false;
         try {
@@ -47,7 +56,12 @@ public class CuentaDao extends AdaptadorDao<Cuenta>{
         return verificar;
     }
 
-    //AQUI
+     /**
+     *Metodo que permite iniciar sesion comparando los datos ingresados con los datos almacenados
+     * @param clave parametro que ingresa el usuario en la ventana de login correspondiente a la contraseña
+     * @param usuario parametro que ingresa el usuario en la ventana de login correspondiente al nombre de usuario
+     * @return c si se encontro o no una coincidencia de datos
+    */  
     public Cuenta inicioSesion(String usuario, String clave) {
         Cuenta c = null;
         try {

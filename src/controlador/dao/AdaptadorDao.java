@@ -12,7 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 /**
- *Interfaz 
+ * Clase que implementa los metodos de la interfaz dao
  * @author Fabricio
  * @param <T>
  */

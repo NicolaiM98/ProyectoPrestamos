@@ -58,7 +58,11 @@ public class RolDao extends AdaptadorDao<Rol>{
         }
         return verificar;
     }
-
+     /**
+     *Metodo que permite buscar un rol segun su nombre
+     *@param nombre el nombre del rol que se desea comparar
+     * @return r si se encontro o no una coincidencia de datos
+    */  
     public Rol buscarRolNombre(String nombre) {
         Rol r = null;
         try {

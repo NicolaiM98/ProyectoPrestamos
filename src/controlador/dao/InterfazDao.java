@@ -8,9 +8,9 @@ package controlador.dao;
 import java.util.List;
 
 /**
- *
+ *  Interfaz Dao con metodos genericos para guardar modificar listar y obtener id
  * @author Fabricio Carrion y Nicolai Mogrovejo
- * @param <T>
+ * @param <T> tipo de dato generico
  */
 public interface InterfazDao<T> {
     public void guardar(T obj) throws Exception;
