@@ -20,11 +20,17 @@ import javax.swing.JTextField;
 import javax.swing.text.JTextComponent;
 import java.util.regex.Matcher;
 /**
- *
+ * Utilidades para validar campos en las vistas del proyecto
  * @author Programacion I 2B
  */
 public class UtilidadesComponente {
-
+    /**
+     * Metodo que permite validar si un campo tipo JComponent se encuentra vacio, ademas muestra un mensaje de error si el campo se encuentra vacio
+     * @param componente  es el jComponent q necesita ser validado
+     * @param mensaje  cadena de String q mu8estra el mensaje de error 
+     * @param tipo secuencia de caracteres q sera comparada 
+     * @return retorna un boolean que en caso de q el campo este vacio es true y caso de que tenga algun caracter es false
+    */    
     public static boolean mostrarError(JComponent componente, String mensaje, char tipo) {
         boolean band = true;
         switch (tipo) {
@@ -44,24 +50,27 @@ public class UtilidadesComponente {
         }
         return band;
     }
-
+     /**
+     *Metodo que permite mostrar un mensaje de error
+     * @param mensaje parametro que permite definir el mensaje por el cual ocurrio el error
+     * @param titulo  parametro que permite definir el titulo de la ventana pop out de error 
+    */    
     public static void mensajeError(String titulo, String mensaje) {
         JOptionPane.showMessageDialog(null, mensaje, titulo, JOptionPane.ERROR_MESSAGE);
     }
-
+    /**
+     *Metodo que permite mostrar un mensaje de verificacion para indicar que la accion fue concretada correctamente
+     * @param mensaje parametro que permite definir el mensaje de la accion que se concreto
+     * @param titulo  parametro que permite definir el titulo de la ventana pop out de la accion que se concreto correctamente
+    */
     public static void mensajeOk(String titulo, String mensaje) {
         JOptionPane.showMessageDialog(null, mensaje, titulo, JOptionPane.INFORMATION_MESSAGE);
     }
 
-    public static boolean validarCampoNumericos(JTextComponent campo, int max) {
-        if (((campo.getText().charAt(0) < '0') || campo.getText().charAt(0) > '9') || (campo.getText().trim().length() > max)) {
-            Toolkit.getDefaultToolkit().beep();
-            return false;
-        } else {
-//            validarCampo(campo);
-            return true;
-        }
-    }
+    /**
+     *Metodo que permite validar la estructura de un correo electronico
+     * @param email  parametro que trae el email que se verificara a continuacion
+    */
     public static void validarEmail(String email){
     Pattern pattern = Pattern
                 .compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
@@ -75,7 +84,11 @@ public class UtilidadesComponente {
            mensajeError("Error","El email ingresado es incorrecto"); 
         }
     }
-    
+    /**
+     *Metodo que permite validar un numero de cedula Ecuatoriana
+     * @param cedula  parametro que trae la cedula que a continuacion se validara
+     * @return  retorna un boolean que si esta en true significa que la cedula es correcta y si esta en false que la cedula es incorrecta
+    */
     public static boolean validarCedula(String cedula) {
         boolean cedulaCorrecta = false;
 
@@ -120,25 +133,4 @@ public class UtilidadesComponente {
         }
         return cedulaCorrecta;
     }
-     
-    
-    public static void validarCampo(JTextComponent campo) {
-        String mensajeError = "";
-
-        if (campo.getText() == null || campo.getText().trim().length() == 0) {
-            mensajeError += "¡Campo requerido!\n";
-        }
-
-        if (mensajeError.length() == 0) {
-            //return true;
-        } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Campos no válidos");
-            alert.setHeaderText(null);
-            alert.setContentText("Por favor, revise los siguiente campos: \n" + mensajeError);
-            alert.showAndWait();
-            //return false;
-        }
-    }
-
 }

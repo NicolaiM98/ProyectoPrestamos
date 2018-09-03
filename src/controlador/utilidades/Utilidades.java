@@ -11,27 +11,29 @@ import java.util.Date;
 import org.apache.commons.lang.StringUtils;
 
 /**
- *
+ * Clase de utilidades para cambiar ciertos valores a fechas tipo Date de java.util
  * @author Fabricio
  */
 
     public class Utilidades extends StringUtils{
       
-   public static String formatearFecha(Date fecha){
-       String fechaSalida = "";
-       try{
-           SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-           fechaSalida = formato.format(fecha);
-       }catch(Exception e){}
-       
-       return fechaSalida;
-   } 
+    /**
+     *Metodo que permite sumar años a una fecha tipo Date de java.util
+     * @param fecha parametro que trae la fecha a la cual se le sumara los años
+     * @param anios parametro que trae los años los cuales se le sumaran a la fecha
+     * @return devuelve la fecha con los años sumados
+    */    
     public static Date sumarAnios( Date fecha , int anios){
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
         calendar.add(Calendar.YEAR, anios);
         return calendar.getTime();
     }
+     /**
+     *Metodo que permite sumar 1 mes a una fecha tipo Date de java.util
+     * @param fecha parametro que trae la fecha a la cual se le sumara 1 mes
+     * @return devuelve la fecha con el mes sumado
+    */    
     public Date sumarMeses( Date fecha ){
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());

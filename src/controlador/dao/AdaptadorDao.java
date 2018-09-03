@@ -12,7 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 /**
- *
+ *Interfaz 
  * @author Fabricio
  * @param <T>
  */

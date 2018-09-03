@@ -12,7 +12,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 /**
- *
+ *Clase conexion: realiza la coneccion del proyecto con la Base de Datos.
  * @author Fabricio
  */
 public class Conexion {
@@ -22,14 +22,15 @@ public class Conexion {
     public static EntityManagerFactory sesion() {
         return Persistence.createEntityManagerFactory(NAME_EMPU);
     }
-
     public static EntityManager getManager() {
         if (manager == null) {
             manager = sesion().createEntityManager();
         }
         return manager;
     }
-
+/**
+ *Crea los roles en la Base de Datos
+ */
     public static void main(String[] args) {
         new RolServicio().crearRoles();
        

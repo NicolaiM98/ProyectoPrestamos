@@ -8,7 +8,7 @@ package controlador.utilidades;
 import modelo.Cuenta;
 
 /**
- *
+ * 
  * @author Fabricio
  */
 public class Sesion {

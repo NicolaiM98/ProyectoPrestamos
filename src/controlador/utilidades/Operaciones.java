@@ -12,7 +12,7 @@ import java.util.Date;
 import vista.utilidades.UtilidadesComponente;
 
 /**
- *
+ *Realiza las operaciones necesarias para calcular los valores de las tablas de amortizacion
  * @author Fabricio
  */
 public class Operaciones {
@@ -20,6 +20,12 @@ public class Operaciones {
     private PagosServicio pgs= new PagosServicio();
     private CuentaBancariaServicio cbs = new CuentaBancariaServicio();
     private Utilidades ut= new Utilidades();
+    /**
+     *Metodo que permite calcular  los valores de la tabla de amortizacion del prestamo tipo Frances 
+     * @param capital parametro que trae el capital total del prestamo para calcular la tabla de amortizacion
+     * @param anios parametro que trae los años en los que se pagara el prestamo para calcular la tabla de amortizacion
+     * @return mensaje Cadena de string que almacena un mensaje para presentar los intereses, cuotas y periodos de pago del prestamo
+    */
     public String CalcularFrances (double capital , int anios){
         String mensaje="";
         double cuota = 0.0;
@@ -45,6 +51,12 @@ public class Operaciones {
         mensaje+= "El total de interes a pagar sera: " +String.format("%.2f",tci)+ " con un interes anual del 5%";
         return mensaje;
     }
+    /**
+     *Metodo que permite calcular  los valores de la tabla de amortizacion del prestamo tipo Aleman
+     * @param capital parametro que trae el capital total del prestamo para calcular la tabla de amortizacion
+     * @param anios parametro que trae los años en los que se pagara el prestamo para calcular la tabla de amortizacion
+     * @return mensaje Cadena de string que almacena un mensaje para presentar las amortizaciones, intereses y periodos de pago del prestamo
+    */
     public String CalcularAleman (double capital , int anios){
         String mensaje="";
         double amortizacion;
@@ -64,6 +76,13 @@ public class Operaciones {
         mensaje+= "El total de interes a pagar sera: " +String.format("%.2f",tci);
         return mensaje;
     }
+    
+    /**
+     *Metodo que permite calcular  los valores de la tabla de amortizacion del prestamo tipo Americano
+     * @param capital parametro que trae el capital total del prestamo para calcular la tabla de amortizacion
+     * @param anios parametro que trae los años en los que se pagara el prestamo para calcular la tabla de amortizacion
+     * @return mensaje Cadena de string que almacena un mensaje para presentar las cuotass, intereses y periodos de pago del prestamo
+    */
      public String CalcularAmericano(double capital , int anios){
         String mensaje="";
         double amortizacion;
