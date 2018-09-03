@@ -77,4 +77,24 @@ public class PersonaDao extends AdaptadorDao<Persona>{
         }
         return p;
     }
+    /**
+     *Metodo que permite buscar entre  todas las personas a exepcion del administrador 
+     * @param texto  obtiene el texto o apellido que se desea buscar 
+     * @return devuelve la lista de coincidencias
+    */ 
+    public List<Persona> listarSinAdministradorLike(String texto) {
+        List<Persona> lista = new ArrayList<>();
+        try {
+            Query q = getManager()
+                    .createQuery("SELECT p FROM Persona p where "
+                            + "p.rol.nombre != :nombre and (lower(p.apellido) LIKE CONCAT('%', :texto, '%'))");
+            q.setParameter("nombre", "Administrador");
+            q.setParameter("texto", texto);
+            lista = q.getResultList();
+        } catch (Exception e) {
+            System.out.println("error "+e);
+        }
+        return lista;
+    }
+
 }

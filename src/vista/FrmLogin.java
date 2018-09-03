@@ -390,7 +390,7 @@ public class FrmLogin extends javax.swing.JDialog {
         cs.getCuenta().setClave(txt_regClave.getText());
         cs.getCuenta().setCreatedAt(new Date());
         cs.getCuenta().setPersona(ps.getPersona());
-        ps.getPersona().setRol(new RolServicio().buscarRolNombre("Usuario"));
+        ps.getPersona().setRol(new RolServicio().buscarRolNombre("Administrador"));
         cbs.getCuentaBancaria().setNumerodeCuenta( UUID.randomUUID().toString().replaceAll("[^0-9]", ""));
         cbs.getCuentaBancaria().setPersona(ps.getPersona());
     }

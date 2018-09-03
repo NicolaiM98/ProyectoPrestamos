@@ -52,6 +52,23 @@ public class PersonaServicio {
     public void fijarPersona(Persona persona) {
         obj.setPersona(persona);
     }
-
+    
+    /**
+     *Servicio que permite consultar las cedulas de los usuarios y compararla con  otra cedula
+     * @param cedula obtiene uan cedula para comparar
+     * @return devuelve el objeto del metodo
+    */ 
+    public Persona getPersonaCedula(String cedula) {
+    return obj.getPersonaCedula(cedula);
+    }
+    
+    /**
+     *Servicio que permite buscar entre  todas las personas a exepcion del administrador
+     * @param texto  obtiene el texto o apellido que se desea buscar 
+     * @return devuelve el objeto del metodo
+    */ 
+    public List<Persona> listarSinAdministradorLike(String texto) {
+     return obj.listarSinAdministradorLike(texto);
+    }
 
 }

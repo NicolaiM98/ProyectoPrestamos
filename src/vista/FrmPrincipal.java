@@ -21,16 +21,16 @@ private PersonaServicio ps = new PersonaServicio();
      */
     public FrmPrincipal() {
         initComponents();
-        comprobarRol();
         cargarDatos();
+        cargarRol();
     }
-    private void comprobarRol(){
-    if(Sesion.getCuenta().getPersona().getRol().toString().toLowerCase().trim().equals("administrador")){
-    btn_admin.setVisible(true);
-    }
-    else if(Sesion.getCuenta().getPersona().getRol().toString().toLowerCase().trim().equals("usuario")){
-    btn_admin.setVisible(false);
-    }
+    private void cargarRol(){
+    if(Sesion.getCuenta().getPersona().getRol().getNombre().toLowerCase().trim().equals("administrador")){
+        btn_admin.setVisible(true);
+        }
+        else if(Sesion.getCuenta().getPersona().getRol().getNombre().toLowerCase().trim().equals("usuario")){
+        btn_admin.setVisible(false);
+        }
     }
     private void cargarDatos(){
     ps.fijarPersona(Sesion.getCuenta().getPersona());
