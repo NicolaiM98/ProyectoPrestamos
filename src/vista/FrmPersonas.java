@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javaapplication40;
+package vista;
 
 import controlador.servicios.PersonaServicio;
 import controlador.utilidades.Utilidades;
@@ -138,7 +138,6 @@ public class FrmPersonas extends javax.swing.JDialog {
         btn_nuevo = new javax.swing.JToggleButton();
         jLabel9 = new javax.swing.JLabel();
         btn_buscar = new javax.swing.JToggleButton();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -266,11 +265,7 @@ public class FrmPersonas extends javax.swing.JDialog {
         getContentPane().add(btn_buscar);
         btn_buscar.setBounds(270, 220, 80, 23);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaapplication40/imagene/asd.jpg"))); // NOI18N
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 570, 530);
-
-        pack();
+        setBounds(0, 0, 624, 575);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
@@ -343,7 +338,6 @@ public class FrmPersonas extends javax.swing.JDialog {
     private javax.swing.JToggleButton btn_guardar;
     private javax.swing.JToggleButton btn_modificar;
     private javax.swing.JToggleButton btn_nuevo;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -162,7 +162,8 @@ private PersonaServicio ps = new PersonaServicio();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void btn_adminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminActionPerformed
-        // TODO add your handling code here:
+         new FrmPersonas(this,true).setVisible(true);
+        dispose();
     }//GEN-LAST:event_btn_adminActionPerformed
 
     /**
