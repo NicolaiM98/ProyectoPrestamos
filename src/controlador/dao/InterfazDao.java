@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author Fabricio
+ * @author Fabricio Carrion y Nicolai Mogrovejo
  * @param <T>
  */
 public interface InterfazDao<T> {
