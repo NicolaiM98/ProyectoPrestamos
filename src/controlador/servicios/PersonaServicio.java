@@ -10,28 +10,44 @@ import java.util.List;
 import modelo.Persona;
 
 /**
- *
- * @author Fabricio
+ *clase que nos sirve de pasamanos del PersonaDao para utilizar sus metodos
+ * @author Fabricio Carrion y Nicolai Mogrovejo
  */
 public class PersonaServicio {
+    //Objeto PersonaDao con el que podemos invocar los metodos del PersonaDao
      private PersonaDao obj = new PersonaDao();
-
+     /**
+     *Servicio que permite obtener los datos de la persona
+     * @return el objeto con los datos de la persona
+    */  
     public Persona getPersona() {
         return obj.getPersona();
     }
-
+     /**
+     *Servicio que permite guardar los datos de la persona
+     * @return datos de la persona guardados
+    */ 
     public boolean guardar() {
         return obj.guardar();
     }
-
+     /**
+     *Servicio que permite listar personas
+     * @return el objeto con la lista de las personas
+    */ 
     public List<Persona> todos() {
         return obj.listar();
     }
-
+     /**
+     *Servicio que permite obtener el id de cada persona
+     * @return el id de cada persona
+    */ 
     public Persona obtener(Long id) {
         return obj.obtener(id);
     }
-
+     /**
+     *Servicio que permite fijar una persona a un objeto
+     * @param persona define que persona se va a fijar con x objeto
+    */ 
     public void fijarPersona(Persona persona) {
         obj.setPersona(persona);
     }

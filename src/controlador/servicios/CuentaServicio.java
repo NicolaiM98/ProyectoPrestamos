@@ -12,32 +12,54 @@ import java.util.UUID;
 import modelo.Cuenta;
 
 /**
- *
- * @author Fabricio
+ *Clase que nos sirve de pasamanos del controlador dao de cuenta para utilizar sus metodos
+ * @author Fabricio Carrion y Nicolai Mogrovejo
  */
 public class CuentaServicio {
+    
+    //objeto CuentaDao con el que podemos invocar sus metodos para utlizarlos
     private CuentaDao obj = new CuentaDao();
 
+     /**
+     *Servicio que permite obtener una cuenta
+     * @return un objeto con los datos de la cuenta
+    */ 
     public Cuenta getCuenta() {
         return obj.getCuenta();
     }
-
+     /**
+     *Servicio que permite guardar los datos de la cuenta   
+     * @return los datos guardados
+    */ 
     public boolean guardar() {
         return obj.guardar();
     }
-
+     /**
+     *Servicio que permite listar las cuentas creadas
+     * @return objeto con el listado de cuentas
+    */ 
     public List<Cuenta> todos() {
         return obj.listar();
     }
-
+     /**
+     *Servicio que permite obtener el id de cada cuenta creada
+     * @param id idetificador para cada cuenta
+     * @return el identificador de cada cuenta
+    */ 
     public Cuenta obtener(Long id) {
         return obj.obtener(id);
     }
-
+     /**
+     *Servicio que permite fijar la cuenta al usuario que la creo
+     * @param cuenta define de quien es la cuenta creada
+     * @return la cuenta del usuario
+    */ 
     public void fijarCuenta(Cuenta cuenta) {
         obj.setCuenta(cuenta);
     }
-
+     /**
+     *Metodo que nos permite crear un administrador
+    */ 
     public   void crearCuentaAdmin() {
         if (todos().isEmpty()) {
             PersonaServicio persona = new PersonaServicio();
@@ -59,7 +81,11 @@ public class CuentaServicio {
 
         }
     }
-
+     /**
+     *Servicio que permite el inicio de sesion
+     * @param usuario y clave son los credenciales del usuario validos para el inicio de sesion
+     * @return el inicio de sesion
+    */ 
     public Cuenta inicioSesion(String usuario, String clave) {
         return obj.inicioSesion(usuario, clave);
     }
