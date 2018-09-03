@@ -70,5 +70,7 @@ public class PersonaServicio {
     public List<Persona> listarSinAdministradorLike(String texto) {
      return obj.listarSinAdministradorLike(texto);
     }
-
+    public void cambiarEstado(String dato){
+      obj.cambiarEstado(dato);
+    }
 }

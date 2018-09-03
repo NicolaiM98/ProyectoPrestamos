@@ -159,6 +159,11 @@ public class FrmPersonas extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbl_tabla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_tablaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbl_tabla);
 
         getContentPane().add(jScrollPane1);
@@ -283,6 +288,13 @@ public class FrmPersonas extends javax.swing.JDialog {
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
       buscar();
     }//GEN-LAST:event_btn_buscarActionPerformed
+
+    private void tbl_tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_tablaMouseClicked
+       if (evt.getClickCount() >=2) {
+       Object dato = modelo.getValueAt(tbl_tabla.getSelectedRow(), 6);
+       ps.cambiarEstado(dato.toString());
+       }
+    }//GEN-LAST:event_tbl_tablaMouseClicked
 
     /**
      * @param args the command line arguments

@@ -45,6 +45,7 @@ public class ModeloTablaPersonas extends AbstractTableModel {
             else{
             return "Habilitada";
             }
+            case 6: return p.getId();
             default: return null; 
         }
     }

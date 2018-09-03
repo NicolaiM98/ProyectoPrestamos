@@ -96,5 +96,20 @@ public class PersonaDao extends AdaptadorDao<Persona>{
         }
         return lista;
     }
+     /**
+     *Metodo que permite cambiar el estado de un pago de false a true
+     * @param dato id de la persona de la cual se necesita cambiar el estado
+    */  
+    public void cambiarEstado(String dato){
+     try {
+            Query q = getManager().createQuery("Update Persona set estado = true where id  = :id"); 
+            q.setParameter("id", Long.parseLong(dato));
+            getManager().getTransaction().begin();
+            q.executeUpdate();
+            getManager().getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println("error "+e);
+        }
+     }
 
 }
