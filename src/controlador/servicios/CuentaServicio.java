@@ -52,7 +52,7 @@ public class CuentaServicio {
      /**
      *Servicio que permite fijar la cuenta al usuario que la creo
      * @param cuenta define de quien es la cuenta creada
-     * @return la cuenta del usuario
+     *
     */ 
     public void fijarCuenta(Cuenta cuenta) {
         obj.setCuenta(cuenta);
@@ -83,7 +83,8 @@ public class CuentaServicio {
     }
      /**
      *Servicio que permite el inicio de sesion
-     * @param usuario y clave son los credenciales del usuario validos para el inicio de sesion
+     * @param usuario  son los credenciales del usuario validos para el inicio de sesion
+     * @param clave clave ingresada pro el usuario 
      * @return el inicio de sesion
     */ 
     public Cuenta inicioSesion(String usuario, String clave) {

@@ -53,13 +53,14 @@ public class PagosServicio {
      /**
      *Servicio que permite fijar los pagos a x personas
      * @param pagos dija el pago al usuario que lo realizo
-     * @return pagos realizados
+     * 
     */ 
     public void fijarPagos(Pagos pagos) {
         obj.setPagos(pagos);
     } 
          /**
      *Servicio que permite listar los pagos
+     * @param dato id para comparar con la id de prestamo
      * @return la lista de pagos 
     */ 
     public List<Pagos> listarPagos(String dato) {
@@ -68,7 +69,7 @@ public class PagosServicio {
          /**
      *Servicio que permite realizar pagos 
      * @param datoP define la cantidad con la que se va a realizar el pago
-     * @return el pago realizado
+     * 
     */ 
     public void realizarPago(String datoP){
      obj.realizarPago(datoP);

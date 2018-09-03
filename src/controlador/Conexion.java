@@ -41,6 +41,7 @@ public class Conexion {
     }
 /**
  *Crea los roles en la Base de Datos
+ * @param args parametro clase main java 
  */
     public static void main(String[] args) {
         new RolServicio().crearRoles();

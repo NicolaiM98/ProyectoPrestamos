@@ -31,6 +31,8 @@ public class FrmPrestamos extends javax.swing.JDialog {
 
     /**
      * Creates new form FrmPrestamos
+     * @param parent componente awt
+     * @param modal boolean
      */
     public FrmPrestamos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

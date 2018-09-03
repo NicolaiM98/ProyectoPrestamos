@@ -14,7 +14,7 @@ import javax.persistence.Query;
 /**
  * Clase que implementa los metodos de la interfaz dao
  * @author Fabricio
- * @param <T>
+ * @param <T> tipod e dato generico
  */
 public class AdaptadorDao<T> implements InterfazDao<T>{
     private Class clazz;

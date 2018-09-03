@@ -50,7 +50,7 @@ public class CuentaBancariaServicio {
      /**
      *Servicio que permite fijar una cuenta bancaria a un usuario
      * @param cuenta define que cuenta sera fijada en un usuario
-     * @return los datos de la cuenta del usuario
+     * 
     */ 
     public void fijarCuentaBancaria(CuentaBancaria cuenta) {
         obj.setCuentaBancaria(cuenta);

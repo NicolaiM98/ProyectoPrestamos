@@ -40,12 +40,15 @@ public class RolServicio {
     }
 /**
      *Servicio que permite obtener id de los roles    
+     * @param id obtiene el id del rol
+     * @return devuelve el objeto cargado del id
     */   
     public Rol obtener(Long id) {
         return obj.obtener(id);
     }
      /**
      *Servicio que permite fijar un rol a x objeto
+     * @param rol carga el objeto rol
     */  
     public void fijarRol(Rol rol) {
         obj.setRol(rol);

@@ -33,6 +33,8 @@ public class FrmLogin extends javax.swing.JDialog {
     private RolServicio rs= new RolServicio();
     /**
      * Creates new form FrmLogin
+     * @param parent componente awt
+     * @param modal boolean
      */
     public FrmLogin(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

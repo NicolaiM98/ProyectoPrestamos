@@ -40,6 +40,7 @@ public class PersonaServicio {
      /**
      *Servicio que permite obtener el id de cada persona
      * @return el id de cada persona
+     * @param id obtiene el id de la persona
     */ 
     public Persona obtener(Long id) {
         return obj.obtener(id);

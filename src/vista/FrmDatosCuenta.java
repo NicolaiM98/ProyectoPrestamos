@@ -18,6 +18,8 @@ public class FrmDatosCuenta extends javax.swing.JDialog {
     private PersonaServicio ps = new PersonaServicio();
     /**
      * Creates new form FrmDatosCuenta
+     * @param parent componente awt
+     * @param modal boolean 
      */
     public FrmDatosCuenta(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

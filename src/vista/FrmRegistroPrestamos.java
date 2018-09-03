@@ -27,6 +27,8 @@ public class FrmRegistroPrestamos extends javax.swing.JDialog {
 
     /**
      * Creates new form FrmCuentaBancaria
+     * @param parent componente awt
+     * @param modal boolean
      */
     public FrmRegistroPrestamos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
