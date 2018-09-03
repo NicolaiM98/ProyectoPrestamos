@@ -13,15 +13,26 @@ import javax.persistence.Persistence;
 
 /**
  *Clase conexion: realiza la coneccion del proyecto con la Base de Datos.
- * @author Fabricio
+ * @author Fabricio Carrion y Nicolai Mogrovejo
  */
 public class Conexion {
     private static EntityManager manager;
-    private static final String NAME_EMPU = "ProyectoFinalPU";
+     /**
+     *Nombre de nuestra persistencia que conecta a la base de datos
 
+    */  
+    private static final String NAME_EMPU = "ProyectoFinalPU";
+     /**
+     *Metodo que permite crear la entidad en la persistencia
+     * @return la Persistencia 
+    */  
     public static EntityManagerFactory sesion() {
         return Persistence.createEntityManagerFactory(NAME_EMPU);
     }
+         /**
+     *Metodo que permite obtener la entidad 
+     * @return la entidad obtenida
+    */  
     public static EntityManager getManager() {
         if (manager == null) {
             manager = sesion().createEntityManager();

@@ -13,7 +13,7 @@ import vista.utilidades.UtilidadesComponente;
 
 /**
  *Realiza las operaciones necesarias para calcular los valores de las tablas de amortizacion
- * @author Fabricio
+ * @author Fabricio Carrion y Nicolai Mogrovejo
  */
 public class Operaciones {
     private PrestamosServicio prs = new PrestamosServicio();

@@ -12,7 +12,7 @@ import org.apache.commons.lang.StringUtils;
 
 /**
  * Clase de utilidades para cambiar ciertos valores a fechas tipo Date de java.util
- * @author Fabricio
+ * @author Fabricio Carrion y Nicolai Mogrovejo
  */
 
     public class Utilidades extends StringUtils{

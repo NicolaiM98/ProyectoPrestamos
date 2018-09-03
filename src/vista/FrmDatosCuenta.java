@@ -95,6 +95,7 @@ public class FrmDatosCuenta extends javax.swing.JDialog {
         jLabel6.setText("Correo Electronico");
 
         txt_correo.setEditable(false);
+        txt_correo.setBackground(new java.awt.Color(255, 255, 255));
         txt_correo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txt_correo.setBorder(null);
         txt_correo.addActionListener(new java.awt.event.ActionListener() {
@@ -107,6 +108,7 @@ public class FrmDatosCuenta extends javax.swing.JDialog {
         jLabel7.setText("Cedula");
 
         txt_cedula.setEditable(false);
+        txt_cedula.setBackground(new java.awt.Color(255, 255, 255));
         txt_cedula.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txt_cedula.setBorder(null);
 

@@ -21,7 +21,7 @@ import javax.swing.text.JTextComponent;
 import java.util.regex.Matcher;
 /**
  * Utilidades para validar campos en las vistas del proyecto
- * @author Programacion I 2B
+ * @author Fabricio Carrion y Nicolai Mogrovejo
  */
 public class UtilidadesComponente {
     /**
