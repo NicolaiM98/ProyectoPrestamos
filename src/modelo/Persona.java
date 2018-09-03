@@ -31,6 +31,7 @@ public class Persona implements Serializable {
     private String cedula;
     @Column(length = 13)
     private String telefono;
+    private Boolean estado=false;
     @Column(length = 40)
     private String correo;
     @Column(length = 40)

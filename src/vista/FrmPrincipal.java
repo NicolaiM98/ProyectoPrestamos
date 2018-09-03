@@ -21,12 +21,19 @@ private PersonaServicio ps = new PersonaServicio();
      */
     public FrmPrincipal() {
         initComponents();
+        comprobarRol();
         cargarDatos();
+    }
+    private void comprobarRol(){
+    if(Sesion.getCuenta().getPersona().getRol().toString().toLowerCase().trim().equals("administrador")){
+    btn_admin.setVisible(true);
+    }
+    else if(Sesion.getCuenta().getPersona().getRol().toString().toLowerCase().trim().equals("usuario")){
+    btn_admin.setVisible(false);
+    }
     }
     private void cargarDatos(){
     ps.fijarPersona(Sesion.getCuenta().getPersona());
-    
-    
     jl_usuario.setText(ps.getPersona().toString());
     
     }
@@ -49,6 +56,7 @@ private PersonaServicio ps = new PersonaServicio();
         jl_usuario = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jToggleButton1 = new javax.swing.JToggleButton();
+        btn_admin = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -116,6 +124,16 @@ private PersonaServicio ps = new PersonaServicio();
         jPanel1.add(jToggleButton1);
         jToggleButton1.setBounds(20, 280, 140, 30);
 
+        btn_admin.setText("Administrar persona");
+        btn_admin.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btn_admin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_adminActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_admin);
+        btn_admin.setBounds(270, 290, 180, 30);
+
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 560, 330);
 
@@ -142,6 +160,10 @@ private PersonaServicio ps = new PersonaServicio();
         new FrmRegistroPrestamos(this,true).setVisible(true);
         dispose();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void btn_adminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_adminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,6 +210,7 @@ JFrame.setDefaultLookAndFeelDecorated(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btn_admin;
     private javax.swing.JToggleButton btn_cerrar;
     private javax.swing.JToggleButton btn_cuenta;
     private javax.swing.JToggleButton btn_prestamo;

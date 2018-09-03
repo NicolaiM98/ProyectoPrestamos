@@ -499,6 +499,7 @@ public class FrmPrestamos extends javax.swing.JDialog {
     }//GEN-LAST:event_btn_volverActionPerformed
 
     private void btn_solicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_solicActionPerformed
+     if(Sesion.getCuenta().getPersona().getEstado()==true){
        if (cbx_tipo.getSelectedIndex()==0) {
             guardarObjetoAmericano();
         }if (cbx_tipo.getSelectedItem().toString().toLowerCase().equals("frances")) {
@@ -506,6 +507,9 @@ public class FrmPrestamos extends javax.swing.JDialog {
         } else if(cbx_tipo.getSelectedItem().toString().toLowerCase().equals("aleman")){
             guardarObjetoAleman();
         }
+     }else if (Sesion.getCuenta().getPersona().getEstado()== false){
+     UtilidadesComponente.mensajeError("Error", "Su ceunta no se encuentra habilitada para solicitar prestamos");
+     }
     }//GEN-LAST:event_btn_solicActionPerformed
 
     private void btn_calcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_calcularActionPerformed
