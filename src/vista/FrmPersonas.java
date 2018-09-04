@@ -126,26 +126,25 @@ public class FrmPersonas extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         txt_nombre = new javax.swing.JTextField();
         txt_email = new javax.swing.JTextField();
         txt_cedula = new javax.swing.JTextField();
         txt_apellidos = new javax.swing.JTextField();
         txt_telefono = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
         txt_buscar = new javax.swing.JTextField();
         btn_guardar = new javax.swing.JToggleButton();
         btn_nuevo = new javax.swing.JToggleButton();
         jLabel9 = new javax.swing.JLabel();
         btn_buscar = new javax.swing.JToggleButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("REGISTRO PERSONAS");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(200, 10, 170, 17);
+        jLabel2.setBounds(200, 10, 210, 22);
 
         tbl_tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -168,6 +167,7 @@ public class FrmPersonas extends javax.swing.JDialog {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(10, 40, 550, 140);
 
+        btn_modificar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn_modificar.setText("MODIFICAR");
         btn_modificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,65 +175,78 @@ public class FrmPersonas extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btn_modificar);
-        btn_modificar.setBounds(470, 220, 91, 23);
+        btn_modificar.setBounds(450, 220, 103, 25);
 
+        jToggleButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jToggleButton2.setText("VOLVER");
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jToggleButton2);
-        jToggleButton2.setBounds(300, 450, 71, 23);
+        jToggleButton2.setBounds(300, 450, 90, 25);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Nombre");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(40, 260, 60, 17);
+        jLabel3.setBounds(40, 260, 120, 17);
 
-        jLabel4.setText("jLabel4");
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setText("Correo Electronico");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(40, 310, 34, 14);
+        jLabel4.setBounds(40, 310, 160, 17);
 
-        jLabel5.setText("jLabel5");
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setText("Cedula");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(40, 370, 34, 14);
+        jLabel5.setBounds(40, 360, 120, 17);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Apellidos");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(320, 260, 60, 17);
+        jLabel6.setBounds(320, 260, 120, 17);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel7.setText("jLabel7");
+        jLabel7.setText("Telefono");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(320, 310, 60, 14);
+        jLabel7.setBounds(320, 310, 120, 14);
 
-        jLabel8.setText("jLabel8");
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(330, 370, 34, 14);
-
-        txt_nombre.setText("jTextField1");
+        txt_nombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txt_nombre);
-        txt_nombre.setBounds(109, 260, 130, 20);
+        txt_nombre.setBounds(40, 280, 220, 23);
 
-        txt_email.setText("jTextField2");
+        txt_email.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txt_email);
-        txt_email.setBounds(110, 310, 130, 20);
+        txt_email.setBounds(40, 330, 220, 20);
 
-        txt_cedula.setText("jTextField3");
+        txt_cedula.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txt_cedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_cedulaActionPerformed(evt);
+            }
+        });
         getContentPane().add(txt_cedula);
-        txt_cedula.setBounds(110, 370, 130, 20);
+        txt_cedula.setBounds(40, 380, 220, 20);
 
-        txt_apellidos.setText("jTextField4");
+        txt_apellidos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txt_apellidos);
-        txt_apellidos.setBounds(390, 260, 130, 20);
+        txt_apellidos.setBounds(320, 280, 220, 23);
 
-        txt_telefono.setText("jTextField5");
+        txt_telefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txt_telefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_telefonoActionPerformed(evt);
+            }
+        });
         getContentPane().add(txt_telefono);
-        txt_telefono.setBounds(400, 320, 130, 20);
+        txt_telefono.setBounds(320, 330, 220, 23);
 
-        jTextField6.setText("jTextField6");
-        getContentPane().add(jTextField6);
-        jTextField6.setBounds(400, 370, 130, 20);
+        txt_buscar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(txt_buscar);
-        txt_buscar.setBounds(20, 220, 200, 20);
+        txt_buscar.setBounds(20, 220, 200, 23);
 
+        btn_guardar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn_guardar.setText("GUARDAR");
         btn_guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -241,8 +254,9 @@ public class FrmPersonas extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btn_guardar);
-        btn_guardar.setBounds(150, 450, 81, 23);
+        btn_guardar.setBounds(160, 450, 95, 25);
 
+        btn_nuevo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn_nuevo.setText("NUEVO");
         btn_nuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -250,12 +264,14 @@ public class FrmPersonas extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btn_nuevo);
-        btn_nuevo.setBounds(370, 220, 67, 23);
+        btn_nuevo.setBounds(360, 220, 77, 25);
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Buscar:");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(20, 190, 50, 14);
+        jLabel9.setBounds(20, 190, 80, 17);
 
+        btn_buscar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn_buscar.setText("BUSCAR");
         btn_buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -263,9 +279,14 @@ public class FrmPersonas extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btn_buscar);
-        btn_buscar.setBounds(270, 220, 80, 23);
+        btn_buscar.setBounds(250, 220, 100, 23);
 
-        setBounds(0, 0, 624, 575);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/asd.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 870, 630);
+
+        setBounds(0, 0, 614, 550);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
@@ -288,8 +309,22 @@ public class FrmPersonas extends javax.swing.JDialog {
        if (evt.getClickCount() >=2) {
        Object dato = modelo.getValueAt(tbl_tabla.getSelectedRow(), 6);
        ps.cambiarEstado(dato.toString());
+       
        }
     }//GEN-LAST:event_tbl_tablaMouseClicked
+
+    private void txt_telefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_telefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_telefonoActionPerformed
+
+    private void txt_cedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cedulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_cedulaActionPerformed
+
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+        new FrmPrincipal().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -317,6 +352,7 @@ public class FrmPersonas extends javax.swing.JDialog {
             java.util.logging.Logger.getLogger(FrmPersonas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -338,16 +374,15 @@ public class FrmPersonas extends javax.swing.JDialog {
     private javax.swing.JToggleButton btn_guardar;
     private javax.swing.JToggleButton btn_modificar;
     private javax.swing.JToggleButton btn_nuevo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JTable tbl_tabla;
     private javax.swing.JTextField txt_apellidos;

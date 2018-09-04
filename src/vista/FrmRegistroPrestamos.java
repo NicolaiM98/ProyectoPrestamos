@@ -82,21 +82,23 @@ public class FrmRegistroPrestamos extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tbl_tabla = new javax.swing.JTable();
         jSeparator2 = new javax.swing.JSeparator();
         btn_prestamos = new javax.swing.JButton();
         jToggleButton1 = new javax.swing.JToggleButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 204));
+        getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("MS UI Gothic", 3, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("REGISTRO DE PRESTAMOS");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(170, 10, 238, 19);
 
         tbl_tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -116,6 +118,12 @@ public class FrmRegistroPrestamos extends javax.swing.JDialog {
         });
         jScrollPane4.setViewportView(tbl_tabla);
 
+        getContentPane().add(jScrollPane4);
+        jScrollPane4.setBounds(30, 60, 540, 250);
+        getContentPane().add(jSeparator2);
+        jSeparator2.setBounds(30, 50, 540, 10);
+
+        btn_prestamos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn_prestamos.setText("VER PRESTAMO");
         btn_prestamos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btn_prestamos.addActionListener(new java.awt.event.ActionListener() {
@@ -123,7 +131,10 @@ public class FrmRegistroPrestamos extends javax.swing.JDialog {
                 btn_prestamosActionPerformed(evt);
             }
         });
+        getContentPane().add(btn_prestamos);
+        btn_prestamos.setBounds(130, 380, 130, 30);
 
+        jToggleButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jToggleButton1.setText("VOLVER");
         jToggleButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -131,58 +142,17 @@ public class FrmRegistroPrestamos extends javax.swing.JDialog {
                 jToggleButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jToggleButton1);
+        jToggleButton1.setBounds(340, 380, 110, 30);
+        getContentPane().add(jSeparator1);
+        jSeparator1.setBounds(30, 330, 540, 10);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jSeparator2)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(168, 168, 168)
-                .addComponent(btn_prestamos, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(100, 100, 100)
-                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(169, 169, 169))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_prestamos, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(33, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/asd.jpg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 620, 440);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
-        setSize(new java.awt.Dimension(633, 522));
+        setSize(new java.awt.Dimension(626, 478));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -200,16 +170,20 @@ public class FrmRegistroPrestamos extends javax.swing.JDialog {
             Object datoIdPagoamr = modelopa.getValueAt(tbl_tabla.getSelectedRow(), 6);
             pgs.realizarPago(datoIdPagoamr.toString());
                 UtilidadesComponente.mensajeOk("Pago Realizado", "Su pago se ah realizado correctamente");
+
+                
             }
             if(tipo.toString().toLowerCase().equals("frances")){
              Object datoIdPagofr = modelofr.getValueAt(tbl_tabla.getSelectedRow(), 6);
             pgs.realizarPago(datoIdPagofr.toString());
             UtilidadesComponente.mensajeOk("Pago Realizado", "Su pago se ah realizado correctamente");
+
             }
             else if(tipo.toString().toLowerCase().equals("aleman")){
             Object datoIdPagoal = modelopal.getValueAt(tbl_tabla.getSelectedRow(), 6);
             pgs.realizarPago(datoIdPagoal.toString());
             UtilidadesComponente.mensajeOk("Pago Realizado", "Su pago se ah realizado correctamente");
+
             }
         }
     }//GEN-LAST:event_tbl_tablaMouseClicked
@@ -281,8 +255,9 @@ public class FrmRegistroPrestamos extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_prestamos;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JTable tbl_tabla;
