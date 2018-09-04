@@ -3,17 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/usu/Documents/NetBeansProjects/ProyectoFinal/src/controlador/servicios/PagosServicio.java</file>
-            <file>file:/C:/Users/usu/Documents/NetBeansProjects/ProyectoFinal/src/controlador/dao/PagosDao.java</file>
-            <file>file:/C:/Users/usu/Documents/NetBeansProjects/ProyectoFinal/src/controlador/servicios/PersonaServicio.java</file>
+            <file>file:/C:/Users/usu/Documents/NetBeansProjects/ProyectoFinal/src/vista/FrmPrestamos.java</file>
             <file>file:/C:/Users/usu/Documents/NetBeansProjects/ProyectoFinal/src/vista/tablas/ModeloTablaPersonas.java</file>
+            <file>file:/C:/Users/usu/Documents/NetBeansProjects/ProyectoFinal/src/controlador/Conexion.java</file>
             <file>file:/C:/Users/usu/Documents/NetBeansProjects/ProyectoFinal/src/vista/FrmLogin.java</file>
-            <file>file:/C:/Users/usu/Documents/NetBeansProjects/ProyectoFinal/src/vista/FrmRegistroPrestamos.java</file>
-            <file>file:/C:/Users/usu/Documents/NetBeansProjects/ProyectoFinal/src/modelo/Persona.java</file>
-            <file>file:/C:/Users/usu/Documents/NetBeansProjects/ProyectoFinal/src/controlador/dao/PersonaDao.java</file>
             <file>file:/C:/Users/usu/Documents/NetBeansProjects/ProyectoFinal/src/vista/FrmPersonas.java</file>
-            <file>file:/C:/Users/usu/Documents/NetBeansProjects/ProyectoFinal/src/vista/tablas/ModeloTablaPagosAmericano.java</file>
-            <file>file:/C:/Users/usu/Documents/NetBeansProjects/ProyectoFinal/src/vista/tablas/ModeloTablaPagosFrances.java</file>
+            <file>file:/C:/Users/usu/Documents/NetBeansProjects/ProyectoFinal/src/vista/FrmPrincipal.java</file>
+            <file>file:/C:/Users/usu/Documents/NetBeansProjects/ProyectoFinal/src/modelo/Rol.java</file>
         </group>
     </open-files>
 </project-private>

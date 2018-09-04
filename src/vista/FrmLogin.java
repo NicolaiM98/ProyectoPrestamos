@@ -397,32 +397,31 @@ public class FrmLogin extends javax.swing.JDialog {
 
     private void guardar() {
         String mensaje = "Se requiere este campo";
-        if (!UtilidadesComponente.mostrarError(txt_regUsuario, "Falta este dato", 'r')
-                && !UtilidadesComponente.mostrarError(txt_regNom, "Falta este dato", 'r')
-                && !UtilidadesComponente.mostrarError(txt_regApell, "Falta este dato", 'r')
-                && !UtilidadesComponente.mostrarError(txt_regEmail, "Falta este dato", 'r')
-                && !UtilidadesComponente.mostrarError(txt_regCed, "Falta este dato", 'r')
-                && !UtilidadesComponente.mostrarError(txt_regTelef, "Falta este dato", 'r')
-                && !UtilidadesComponente.mostrarError(txt_regClave, "Falta este dato", 'r')) {
+        if (!UtilidadesComponente.mostrarError(txt_regUsuario, mensaje, 'r')
+                && !UtilidadesComponente.mostrarError(txt_regNom, mensaje, 'r')
+                && !UtilidadesComponente.mostrarError(txt_regApell, mensaje, 'r')
+                && !UtilidadesComponente.mostrarError(txt_regEmail, mensaje , 'r')
+                && !UtilidadesComponente.mostrarError(txt_regCed, mensaje , 'r')
+                && !UtilidadesComponente.mostrarError(txt_regTelef, mensaje , 'r')
+                && !UtilidadesComponente.mostrarError(txt_regClave, mensaje , 'r')) {
                 cargarObjeto();
-            if (ps.getPersona().getId() != null && 
-                    (ps.getPersona().getCorreo().toLowerCase().contentEquals(txt_regEmail.getText().toLowerCase()))) {
-                if (ps.guardar()&& cs.guardar()&& cbs.guardar()) {
-                    UtilidadesComponente.mensajeOk("Se ha guardado correctamente", "");
-                    limpiar();
+            if (UtilidadesComponente.validarCedula(txt_regCed.getText())) {
+                    if (ps.getPersonaCedula(txt_regCed.getText()) != null) {
+                        UtilidadesComponente.mensajeError("Error de cedula", "Cedula ya registrada");
+                    } else { 
+                        if (ps.guardar()) {
+                            UtilidadesComponente.mensajeOk("OK", "Se ha registrado correctamente");
+                            limpiar();
+                        } else {
+                            UtilidadesComponente.mensajeError("Error", "No se pudo guardar");
+                        }
+                    }
                 } else {
-                    UtilidadesComponente.mensajeError("Error", "No se pudo guardar");
-                }
-            } else {
-                if (ps.guardar()&& cs.guardar()&& cbs.guardar()) {
-                    UtilidadesComponente.mensajeOk("!BIENVENID@¡", "Se ha registrado correctamente");
-                    limpiar();
-                } else {
-                    UtilidadesComponente.mensajeError("NO SE HA PODIDO REGISTRAR", "Revise que sus datos sean correctos");
+                    UtilidadesComponente.mensajeError("Error de cedula", "Cedula no valida");
                 }
             }
         }
-    }
+    
 
     private void limpiar() {
         txt_regApell.setText(null);
